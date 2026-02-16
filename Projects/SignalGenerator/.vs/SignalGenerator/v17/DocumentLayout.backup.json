@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\STM32_edu\\Projects\\SignalGenerator\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\STM32_edu\\Projects\\SignalGenerator\\CMSIS_5\\CMSIS\\Core\\Include\\core_cm4.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CMSIS_5\\CMSIS\\Core\\Include\\core_cm4.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\STM32_edu\\Projects\\SignalGenerator\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\STM32_edu\\Projects\\SignalGenerator\\Output\\Debug\\Obj\\Executable_1\\Executable_1_files.ind||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Output\\Debug\\Obj\\Executable_1\\Executable_1_files.ind||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\STM32_edu\\Projects\\SignalGenerator\\Output\\Debug\\Obj\\Executable_1\\main.d||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Output\\Debug\\Obj\\Executable_1\\main.d||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\STM32_edu\\Projects\\SignalGenerator\\STM32F4xx\\Device\\Source\\system_stm32f4xx.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STM32F4xx\\Device\\Source\\system_stm32f4xx.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "core_cm4.h",
+              "DocumentMoniker": "E:\\STM32_edu\\Projects\\SignalGenerator\\CMSIS_5\\CMSIS\\Core\\Include\\core_cm4.h",
+              "RelativeDocumentMoniker": "CMSIS_5\\CMSIS\\Core\\Include\\core_cm4.h",
+              "ToolTip": "E:\\STM32_edu\\Projects\\SignalGenerator\\CMSIS_5\\CMSIS\\Core\\Include\\core_cm4.h",
+              "RelativeToolTip": "CMSIS_5\\CMSIS\\Core\\Include\\core_cm4.h",
+              "ViewState": "AgIAANcBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-06T18:50:28.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "main.c",
+              "DocumentMoniker": "E:\\STM32_edu\\Projects\\SignalGenerator\\main.c",
+              "RelativeDocumentMoniker": "main.c",
+              "ToolTip": "E:\\STM32_edu\\Projects\\SignalGenerator\\main.c",
+              "RelativeToolTip": "main.c",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-01-06T18:49:48.068Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Executable_1_files.ind",
+              "DocumentMoniker": "E:\\STM32_edu\\Projects\\SignalGenerator\\Output\\Debug\\Obj\\Executable_1\\Executable_1_files.ind",
+              "RelativeDocumentMoniker": "Output\\Debug\\Obj\\Executable_1\\Executable_1_files.ind",
+              "ToolTip": "E:\\STM32_edu\\Projects\\SignalGenerator\\Output\\Debug\\Obj\\Executable_1\\Executable_1_files.ind",
+              "RelativeToolTip": "Output\\Debug\\Obj\\Executable_1\\Executable_1_files.ind",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-06T18:49:19.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "main.d",
+              "DocumentMoniker": "E:\\STM32_edu\\Projects\\SignalGenerator\\Output\\Debug\\Obj\\Executable_1\\main.d",
+              "RelativeDocumentMoniker": "Output\\Debug\\Obj\\Executable_1\\main.d",
+              "ToolTip": "E:\\STM32_edu\\Projects\\SignalGenerator\\Output\\Debug\\Obj\\Executable_1\\main.d",
+              "RelativeToolTip": "Output\\Debug\\Obj\\Executable_1\\main.d",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-06T18:48:00.888Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "system_stm32f4xx.c",
+              "DocumentMoniker": "E:\\STM32_edu\\Projects\\SignalGenerator\\STM32F4xx\\Device\\Source\\system_stm32f4xx.c",
+              "RelativeDocumentMoniker": "STM32F4xx\\Device\\Source\\system_stm32f4xx.c",
+              "ToolTip": "E:\\STM32_edu\\Projects\\SignalGenerator\\STM32F4xx\\Device\\Source\\system_stm32f4xx.c",
+              "RelativeToolTip": "STM32F4xx\\Device\\Source\\system_stm32f4xx.c",
+              "ViewState": "AgIAAPMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-01-06T18:47:24.099Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

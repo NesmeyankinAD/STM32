@@ -1,0 +1,17 @@
+Output/Debug/Obj/Executable_1/SystemInitialization.o: \
+  E:\STM32_edu\Projects\SignalGenerator\SystemInitialization.cpp \
+  E:\STM32_edu\Projects\SignalGenerator\SystemInitialization.h \
+  E:\STM32_edu\Projects\SignalGenerator\STM32F4xx\Device\Include\stm32f4xx.h \
+  E:\STM32_edu\Projects\SignalGenerator\STM32F4xx\Device\Include\stm32f407xx.h \
+  E:\STM32_edu\Projects\SignalGenerator\CMSIS_5\CMSIS\Core\Include\core_cm4.h \
+  D:\Programms\source\libcxx\include\stdint.h \
+  D:\Programms\source\libcxx\include\__config \
+  D:\Programms\include\stdint.h D:\Programms\include\__SEGGER_RTL.h \
+  D:\Programms\include\__SEGGER_RTL_ConfDefaults.h \
+  D:\Programms\include\__SEGGER_RTL_Conf.h \
+  D:\Programms\include\__SEGGER_RTL_Arm_Conf.h \
+  E:\STM32_edu\Projects\SignalGenerator\CMSIS_5\CMSIS\Core\Include\cmsis_version.h \
+  E:\STM32_edu\Projects\SignalGenerator\CMSIS_5\CMSIS\Core\Include\cmsis_compiler.h \
+  E:\STM32_edu\Projects\SignalGenerator\CMSIS_5\CMSIS\Core\Include\cmsis_gcc.h \
+  E:\STM32_edu\Projects\SignalGenerator\CMSIS_5\CMSIS\Core\Include\mpu_armv7.h \
+  E:\STM32_edu\Projects\SignalGenerator\STM32F4xx\Device\Include\system_stm32f4xx.h

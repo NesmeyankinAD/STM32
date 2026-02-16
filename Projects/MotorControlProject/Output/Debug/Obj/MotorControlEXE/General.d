@@ -8,6 +8,15 @@ Output/Debug/Obj/MotorControlEXE/General.o: \
   D:\Programms\include\__SEGGER_RTL_Conf.h \
   D:\Programms\include\__SEGGER_RTL_Arm_Conf.h \
   E:\STM32_edu\Projects\MotorControlProject\ControlSystem.h \
+  E:\STM32_edu\Projects\MotorControlProject\STM32F4xx\Device\Include\stm32f4xx.h \
+  E:\STM32_edu\Projects\MotorControlProject\STM32F4xx\Device\Include\stm32f407xx.h \
+  E:\STM32_edu\Projects\MotorControlProject\CMSIS_5\CMSIS\Core\Include\core_cm4.h \
+  E:\STM32_edu\Projects\MotorControlProject\CMSIS_5\CMSIS\Core\Include\cmsis_version.h \
+  E:\STM32_edu\Projects\MotorControlProject\CMSIS_5\CMSIS\Core\Include\cmsis_compiler.h \
+  E:\STM32_edu\Projects\MotorControlProject\CMSIS_5\CMSIS\Core\Include\cmsis_gcc.h \
+  E:\STM32_edu\Projects\MotorControlProject\CMSIS_5\CMSIS\Core\Include\mpu_armv7.h \
+  E:\STM32_edu\Projects\MotorControlProject\STM32F4xx\Device\Include\system_stm32f4xx.h \
+  E:\STM32_edu\Projects\MotorControlProject\SystemInitialization.h \
   E:\STM32_edu\Projects\MotorControlProject\CoordinateTransformation.h \
   D:\Programms\source\libcxx\include\math.h D:\Programms\include\math.h \
   D:\Programms\include\__SEGGER_RTL_FP.h \

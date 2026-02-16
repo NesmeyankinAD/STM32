@@ -34,6 +34,7 @@ Output/Debug/Obj/MotorControlEXE/InterruptHeandlers.o: \
   E:\STM32_edu\Projects\MotorControlProject\Observer.h \
   E:\STM32_edu\Projects\MotorControlProject\General.h \
   E:\STM32_edu\Projects\MotorControlProject\ControlSystem.h \
+  E:\STM32_edu\Projects\MotorControlProject\SystemInitialization.h \
   E:\STM32_edu\Projects\MotorControlProject\CoordinateTransformation.h \
   E:\STM32_edu\Projects\MotorControlProject\PIController.h \
   E:\STM32_edu\Projects\MotorControlProject\MaxMinModulation.h \

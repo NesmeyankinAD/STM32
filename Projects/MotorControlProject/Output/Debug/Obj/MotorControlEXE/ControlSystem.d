@@ -1,15 +1,26 @@
 Output/Debug/Obj/MotorControlEXE/ControlSystem.o: \
   E:\STM32_edu\Projects\MotorControlProject\ControlSystem.cpp \
   E:\STM32_edu\Projects\MotorControlProject\ControlSystem.h \
-  E:\STM32_edu\Projects\MotorControlProject\CoordinateTransformation.h \
-  D:\Programms\source\libcxx\include\math.h \
+  E:\STM32_edu\Projects\MotorControlProject\STM32F4xx\Device\Include\stm32f4xx.h \
+  E:\STM32_edu\Projects\MotorControlProject\STM32F4xx\Device\Include\stm32f407xx.h \
+  E:\STM32_edu\Projects\MotorControlProject\CMSIS_5\CMSIS\Core\Include\core_cm4.h \
+  D:\Programms\source\libcxx\include\stdint.h \
   D:\Programms\source\libcxx\include\__config \
-  D:\Programms\include\math.h D:\Programms\include\__SEGGER_RTL_FP.h \
+  D:\Programms\include\stdint.h D:\Programms\include\__SEGGER_RTL.h \
   D:\Programms\include\__SEGGER_RTL_ConfDefaults.h \
   D:\Programms\include\__SEGGER_RTL_Conf.h \
   D:\Programms\include\__SEGGER_RTL_Arm_Conf.h \
+  E:\STM32_edu\Projects\MotorControlProject\CMSIS_5\CMSIS\Core\Include\cmsis_version.h \
+  E:\STM32_edu\Projects\MotorControlProject\CMSIS_5\CMSIS\Core\Include\cmsis_compiler.h \
+  E:\STM32_edu\Projects\MotorControlProject\CMSIS_5\CMSIS\Core\Include\cmsis_gcc.h \
+  E:\STM32_edu\Projects\MotorControlProject\CMSIS_5\CMSIS\Core\Include\mpu_armv7.h \
+  E:\STM32_edu\Projects\MotorControlProject\STM32F4xx\Device\Include\system_stm32f4xx.h \
+  E:\STM32_edu\Projects\MotorControlProject\SystemInitialization.h \
+  E:\STM32_edu\Projects\MotorControlProject\CoordinateTransformation.h \
+  D:\Programms\source\libcxx\include\math.h D:\Programms\include\math.h \
+  D:\Programms\include\__SEGGER_RTL_FP.h \
   D:\Programms\source\libcxx\include\stdlib.h \
-  D:\Programms\include\stdlib.h D:\Programms\include\__SEGGER_RTL.h \
+  D:\Programms\include\stdlib.h \
   D:\Programms\source\libcxx\include\type_traits \
   D:\Programms\source\libcxx\include\cstddef \
   D:\Programms\source\libcxx\include\version \
@@ -17,8 +28,6 @@ Output/Debug/Obj/MotorControlEXE/ControlSystem.o: \
   D:\Programms\source\libcxx\include\__nullptr \
   D:\Programms\source\libcxx\include\limits \
   D:\Programms\source\libcxx\include\__undef_macros \
-  D:\Programms\source\libcxx\include\stdint.h \
-  D:\Programms\include\stdint.h \
   E:\STM32_edu\Projects\MotorControlProject\PIController.h \
   E:\STM32_edu\Projects\MotorControlProject\MaxMinModulation.h \
   D:\Programms\source\libcxx\include\algorithm \

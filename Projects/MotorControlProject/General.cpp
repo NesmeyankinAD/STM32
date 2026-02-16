@@ -1,5 +1,7 @@
 #include "General.h"
 
+#include "SystemInitialization.h"
+
 extern int32_t service_counter;
 
 void ControlStrategy::set_control_system(ControlSystem* cs_ptr)
@@ -18,6 +20,8 @@ StrategyHandler::StrategyHandler(ControlSystem* control_system)
 
 void StopStrategy::execute()
 {
+  TIM1_Stop(); //Остановка ШИМ-счётчика
+
   
 }
 

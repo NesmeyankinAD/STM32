@@ -11,3 +11,9 @@ void EXTI_Init();
 void ADC1_DMA1_Init();
 
 void TIM_Start();
+void TIM1_Start();
+void TIM1_Stop();
+void TIM2_Start();
+void TIM2_Stop();
+void TIM4_Start();
+void TIM4_Stop();

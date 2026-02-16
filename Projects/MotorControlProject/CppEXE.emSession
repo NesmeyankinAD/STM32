@@ -33,10 +33,9 @@
  <Project>
   <ProjectSessionItem path="MotorControlEXE"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE"/>
-  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ADCHandler"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystem"/>
-  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystemBlocks"/>
-  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;FaultHandler"/>
+  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;InterruptHeandlers"/>
+  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;InterruptHeandlers;Sources"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;SystemInitialization"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;SystemInitialization;Headers"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;SystemInitialization;Sources"/>
@@ -87,16 +86,14 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="16" y="92" useTextEdit="1" folds0="73,79,102" path="main.cpp" left="0" selected="1" top="66" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="6" y="13" useTextEdit="1" path="Trigger.cpp" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="2" y="16" useTextEdit="1" path="Trigger.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="53" y="20" useTextEdit="1" path="FaultHandler.h" left="0" top="3" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="29" y="36" useTextEdit="1" path="FaultHandler.cpp" left="0" top="9" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="ADCHandler.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="ADCHandler.cpp" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="21" y="66" useTextEdit="1" path="General.cpp" left="0" top="75" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="General.h" left="0" top="45" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="2" y="574" useTextEdit="1" folds0="3,37,106,141,315,367,416,438,506" path="SystemInitialization.cpp" left="0" top="90" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="42" y="91" useTextEdit="1" folds0="73,79,102" path="main.cpp" left="0" selected="1" top="28" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="SystemInitialization.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="48" y="660" useTextEdit="1" folds0="3,37,106,141,262,416,506,566,584,611" path="SystemInitialization.cpp" left="0" top="28" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="2" y="24" useTextEdit="1" path="General.cpp" left="0" top="2" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="71" y="13" useTextEdit="1" path="ControlSystem.cpp" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="33" y="4" useTextEdit="1" path="ControlSystem.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" folds0="3,33,39" path="InterruptHeandlers.cpp" left="0" top="6" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="General.h" left="0" top="33" codecName="Default"/>
  </Files>
  <EMStudioWindow activeProject="MotorControlEXE" fileDialogDefaultFilter="*" autoConnectTarget="ST-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="E:/STM32_edu/Projects/CppProject" debugSearchPath="" autoConnectCapabilities="3455"/>
 </session>

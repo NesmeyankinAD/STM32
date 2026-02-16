@@ -581,22 +581,6 @@ void DAC_Init()
   //DAC -> DHR12R2 = 0;                      //Инициализация выхода DAC2_OUT
 }//DAC_Init()
 
-void TIM_Start()
-{
-  //---TIM1:Slave mode - Reset mode; TIM2:Master mode - Update ---//
-
-  TIM1 -> CR1   |= TIM_CR1_CEN; //Включение таймера-slave TIM1
-                                
-  TIM2 -> CR1   |= TIM_CR1_CEN; //Включение таймера-master TIM2
-  TIM2 -> EGR   |= TIM_EGR_UG;  //Вызов события обновления для обновления
-                                //значений регистров ARR и CCR2
-                                //по этому событию произойдёт синхронизация счётчиков
-                                
-  TIM4 -> CR1   |= TIM_CR1_CEN; //Включение TIM4
-
-}//TIM_Start()
-
-
 void EXTI_Init()
 {
   SYSCFG -> EXTICR[0] |= SYSCFG_EXTICR1_EXTI1_PA;        //Линия прерываний 1, порт А, GPIOA1
@@ -623,3 +607,62 @@ void EXTI_Init()
   NVIC_EnableIRQ(EXTI2_IRQn);
   NVIC_EnableIRQ(EXTI3_IRQn);                 
 }//EXTI_Init()
+
+void TIM_Start()
+{
+  //---TIM1:Slave mode - Reset mode; TIM2:Master mode - Update ---//
+
+  TIM1 -> CR1   |= TIM_CR1_CEN; //Включение таймера-slave TIM1
+                                
+  TIM2 -> CR1   |= TIM_CR1_CEN; //Включение таймера-master TIM2
+  TIM2 -> EGR   |= TIM_EGR_UG;  //Вызов события обновления для обновления
+                                //значений регистров ARR и CCR2
+                                //по этому событию произойдёт синхронизация счётчиков
+                                
+  TIM4 -> CR1   |= TIM_CR1_CEN; //Включение TIM4
+
+}//TIM_Start()
+
+void TIM1_Start()
+{
+  if(!((TIM1 -> CR1) & TIM_CR1_CEN))
+  {
+    TIM1 -> CR1 |= TIM_CR1_CEN; //Включение TIM1
+
+    TIM2 -> EGR |= TIM_EGR_UG;  //Вызов события обновления для обновления
+                                //значений регистров ARR и CCR
+                                //по этому событию произойдёт синхронизация счётчиков 
+                                //TIM1 - Slave, TIM2 - Master
+  }
+}
+
+void TIM1_Stop()
+{
+  TIM1 -> CR1 &= ~(TIM_CR1_CEN); //Выключение TIM1
+}
+
+void TIM2_Start()
+{
+  if(!((TIM2 -> CR1) & TIM_CR1_CEN))
+  {
+    TIM2 -> CR1 |= TIM_CR1_CEN; //Включение TIM2 
+  }
+}
+
+void TIM2_Stop()
+{
+  TIM2 -> CR1 &= ~(TIM_CR1_CEN); //Выключение TIM2
+}
+
+void TIM4_Start()
+{
+  if(!((TIM4 -> CR1) & TIM_CR1_CEN))
+  {
+    TIM4 -> CR1 |= TIM_CR1_CEN; //Включение TIM4
+  }
+}
+
+void TIM4_Stop()
+{
+  TIM4 -> CR1 &= ~(TIM_CR1_CEN); //Выключение TIM4
+}
