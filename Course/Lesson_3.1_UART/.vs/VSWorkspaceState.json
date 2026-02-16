@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\CMSIS_5",
+    "\\CMSIS_5\\CMSIS",
+    "\\CMSIS_5\\CMSIS\\Core",
+    "\\CMSIS_5\\CMSIS\\Core\\Include",
+    "\\Output",
+    "\\Output\\Debug",
+    "\\Output\\Debug\\Exe",
+    "\\Output\\Debug\\Obj",
+    "\\Output\\Debug\\Obj\\Executable_1"
+  ],
+  "SelectedNode": "\\Output\\Debug\\Obj\\Executable_1\\main.d",
+  "PreviewInSolutionExplorer": false
+}

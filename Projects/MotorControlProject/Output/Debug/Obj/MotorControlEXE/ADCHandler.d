@@ -1,0 +1,17 @@
+Output/Debug/Obj/MotorControlEXE/ADCHandler.o: \
+  E:\STM32_edu\Projects\MotorControlProject\ADCHandler.cpp \
+  E:\STM32_edu\Projects\MotorControlProject\STM32F4xx\Device\Include\stm32f4xx.h \
+  E:\STM32_edu\Projects\MotorControlProject\STM32F4xx\Device\Include\stm32f407xx.h \
+  E:\STM32_edu\Projects\MotorControlProject\CMSIS_5\CMSIS\Core\Include\core_cm4.h \
+  D:\Programms\source\libcxx\include\stdint.h \
+  D:\Programms\source\libcxx\include\__config \
+  D:\Programms\include\stdint.h D:\Programms\include\__SEGGER_RTL.h \
+  D:\Programms\include\__SEGGER_RTL_ConfDefaults.h \
+  D:\Programms\include\__SEGGER_RTL_Conf.h \
+  D:\Programms\include\__SEGGER_RTL_Arm_Conf.h \
+  E:\STM32_edu\Projects\MotorControlProject\CMSIS_5\CMSIS\Core\Include\cmsis_version.h \
+  E:\STM32_edu\Projects\MotorControlProject\CMSIS_5\CMSIS\Core\Include\cmsis_compiler.h \
+  E:\STM32_edu\Projects\MotorControlProject\CMSIS_5\CMSIS\Core\Include\cmsis_gcc.h \
+  E:\STM32_edu\Projects\MotorControlProject\CMSIS_5\CMSIS\Core\Include\mpu_armv7.h \
+  E:\STM32_edu\Projects\MotorControlProject\STM32F4xx\Device\Include\system_stm32f4xx.h \
+  E:\STM32_edu\Projects\MotorControlProject\ADCHandler.h
