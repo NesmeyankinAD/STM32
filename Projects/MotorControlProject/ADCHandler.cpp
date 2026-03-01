@@ -23,7 +23,7 @@ void ADCHandler::copy_data()
 {
   static int iterator = 0;
 
-  if(iterator == 3) iterator = 0;
+  if(iterator == 4) iterator = 0;
 
   ADC_data_A[iterator] = ADC_data[0];
   ADC_data_B[iterator] = ADC_data[1];
