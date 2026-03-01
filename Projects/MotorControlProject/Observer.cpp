@@ -55,7 +55,7 @@ void SynchroMotorObserver::set_present_time (int32_t& time)
 
 void SynchroMotorObserver::compute_rotation_frequency()
 {
-  m_rotation_frequency = (m_rotation_direction * 6.0 / ((m_present_time - m_previous_time) / 1000000.0) / 1); 
+  m_rotation_frequency = (m_rotation_direction * 6.0 / ((m_present_time - m_previous_time) / 1000000.0) / 1); //град/с 
 }
 
 void SynchroMotorObserver::compute_angle()

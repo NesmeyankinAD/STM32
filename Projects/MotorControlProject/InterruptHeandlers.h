@@ -1,6 +1,8 @@
 #include "stm32f4xx.h"
 #include "SineWave.h"
 #include "ThreeSineWave.h"
+
+#include "ADCHandler.h"
 #include "Observer.h"
 
 #include "General.h"
@@ -13,6 +15,8 @@ extern int32_t   ms_counter;
 extern int32_t   led_counter;
 
 extern SynchroMotorObserver observer;
+
+extern ADCHandler adc_handler;
 
 extern ControlStrategy* currentStrategy;
 
@@ -30,3 +34,5 @@ extern "C" void ADC_IRQHandler();
 extern "C" void EXTI1_IRQHandler();
 extern "C" void EXTI2_IRQHandler();
 extern "C" void EXTI3_IRQHandler();
+
+extern "C" void DMA1_Stream0_IRQHandler();

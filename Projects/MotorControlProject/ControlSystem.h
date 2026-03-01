@@ -7,6 +7,7 @@
 #include "PIController.h"
 #include "MaxMinModulation.h"
 #include "Filter_I.h"
+#include "ADCHandler.h"
 
 class ControlSystemConfiguration
 {

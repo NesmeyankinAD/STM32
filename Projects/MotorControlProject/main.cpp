@@ -50,8 +50,6 @@ ControlStrategy* currentStrategy = nullptr;
 StrategyHandler strategy_handler(&motor_control_system);
 
 
-int32_t service_counter = 0;
-
 bool enable_work = false;
 bool fault       = false;
 
@@ -95,7 +93,7 @@ int main()
   
   while(1)
   {
-    adc_handler.convert_data();//Преобразование данных из АЦП
+    //adc_handler.convert_data();//Преобразование данных из АЦП
     
     /*Тут set(), reset() триггеров в fault_handler*/
     fault_handler.execute();

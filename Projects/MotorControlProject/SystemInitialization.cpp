@@ -37,7 +37,7 @@ void ADC1_Init()
 void ADC1_DMA1_Init()
 {
   /*Abstract
-  Continuous measurment of phase currents by ADC1 and DMA1_Stream0. 
+  Measurment of phase currents by ADC1 and DMA1_Stream0. 
   PC0 - IN10 
   PC1 - IN11
   PC2 - IN12
@@ -57,16 +57,18 @@ void ADC1_DMA1_Init()
                       GPIO_MODER_MODER2);                    
                                                              
                                                              
-  DMA1_Stream0 -> CR = 0;                                    
-  DMA1_Stream0 -> PAR = (uint32_t)&(ADC1 -> DR);             //Периферийный адрес — регистр данных ADC
+  DMA1_Stream0 -> CR   = 0;                                    
+  DMA1_Stream0 -> PAR  = (uint32_t)&(ADC1 -> DR);            //Периферийный адрес — регистр данных ADC
   DMA1_Stream0 -> NDTR = 3;                                  //3 элемента (по 1 на канал)
 
 
   DMA1_Stream0 -> CR |= DMA_SxCR_MINC;                       // инкремент addr при передаче
   DMA1_Stream0 -> CR |= DMA_SxCR_PSIZE_0 | DMA_SxCR_MSIZE_0; // Размер данных — 16 бит
-  DMA1_Stream0 -> CR |= DMA_SxCR_CIRC;                       // Круговой режим
+  //DMA1_Stream0 -> CR |= DMA_SxCR_CIRC;                       // Круговой режим
   DMA1_Stream0 -> CR |= (0 << DMA_SxCR_CHSEL_Pos);           // Канал 0
   DMA1_Stream0 -> CR |= DMA_SxCR_DIR_0;                      // Периферия -> Память
+  
+  DMA1_Stream0 -> CR |= DMA_SxCR_TCIE;                       //Прерывание по завершению передачи        
 
   {//Вынести в отдельную функцию, инициализирующую буфер данных АЦП
   //DMA1_Stream0 -> M0AR = (uint32_t)&adcBuffer;
@@ -77,9 +79,9 @@ void ADC1_DMA1_Init()
   ADC1 -> CR1 = 0;              
   ADC1 -> CR2 = 0;              
                                 
-  ADC1 -> CR1 |= ADC_CR1_SCAN;             //Включить сканирование
+  ADC1 -> CR1 |= ADC_CR1_SCAN;             //Включить сканирование (нужно для оцифровки последовательности)
                                            
-  ADC1 -> CR2 |= ADC_CR2_CONT;             //Непрерывный режим
+  ADC1 -> CR2 &= ~(ADC_CR2_CONT);          //Одиночный режим
   ADC1 -> CR2 |= ADC_CR2_DMA;              //Включить DMA
                                            
   ADC1 -> SQR1 &= ~(ADC_SQR1_L);           
@@ -463,13 +465,13 @@ void TIM2_Init()
     TIM2 -> PSC    = 1-1;               //Prescaler; частота тактирования 42 МГц 
     TIM2 -> CR1   &= ~(TIM_CR1_CMS);    //Режим выравнивания edge align
     TIM2 -> CR1   |= TIM_CR1_DIR;       //Режим счёт вверх
-    TIM2 -> ARR    = 16800 - 1;          //Частота пилы 5кГц
-    TIM2 -> CCR2   = 10000;              //Duty cycle, момент начала расчёта
+    TIM2 -> ARR    = 16800 - 1;         //Частота пилы 5кГц
+    TIM2 -> CCR2   = 10000;             //Duty cycle, момент начала расчёта
   }
   
   /*---Настройка Master-mode---*/
 
-  TIM2 -> CR2 |=TIM_CR2_MMS_1;  //010 - Master mode - Update
+  TIM2 -> CR2 |= TIM_CR2_MMS_1;  //010 - Master mode - Update
 
   /*---Настройка каналов TIM2---*/
   {
@@ -536,11 +538,11 @@ void TIM4_Init()
      вверх до ARR_REF. Всего ARR импульсов.
   Получаем частоту (1/период) односкатной пилы таймера равную
                   TIM_FREQ     84 MHz
-  TIM_TICK_FREQ = --------- = -------- = 1 MHz
-                   ARR_REF      84
+  TIM_TICK_FREQ = --------- = -------- = 20 kHz
+                   ARR_REF      4200
   
   TIM -> ARR = ARR_REF - 1 (так как счёт от нуля)
-  TIM -> ARR = 84 - 1
+  TIM -> ARR = 4200 - 1
   
   Получаем односкатную пилу (счёт вверх) c верхним значением ARR + 1 = 84 и частотой TIM_TICK_FREQ = 1 MHz.
   */
@@ -548,8 +550,14 @@ void TIM4_Init()
     TIM4 -> PSC    = 1-1;               //Prescaler; частота тактирования 42 МГц 
     TIM4 -> CR1   &= ~(TIM_CR1_CMS);    //Режим выравнивания edge align
     TIM4 -> CR1   |= TIM_CR1_DIR;       //Режим счёт вверх
-    TIM4 -> ARR    = 84 - 1;            //Частота пилы 1кГц
+    TIM4 -> ARR    = 4200 - 1;          //Частота пилы 20 кГц
   }
+
+  /*---Настройка Slave-mode---*/
+  TIM4 -> SMCR |= TIM_SMCR_TS_0;      //001 - ITR1 TIM2-master
+  TIM4 -> SMCR |= TIM_SMCR_SMS_2;     //100 - Slave-mode - Reset mode
+                                      //счётчик стартует сам, но сбрасывается по триггеру
+                                      //и происходит синхронизация
 
     /*---Настройка прерываний---*/
   {

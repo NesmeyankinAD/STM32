@@ -10,15 +10,44 @@ void ADCHandler::preparing_DMA()
 
 void ADCHandler::ADC_start()
 {
+  ADC1 -> CR2 |= ADC_CR2_ADON;
   ADC1 -> CR2 |= ADC_CR2_SWSTART; //Запуск конвертаций АЦП
+}
+
+void ADCHandler::ADC_stop()
+{
+  ADC1 -> CR2 &= ~ADC_CR2_ADON;
+}
+
+void ADCHandler::copy_data()
+{
+  static int iterator = 0;
+
+  if(iterator == 3) iterator = 0;
+
+  ADC_data_A[iterator] = ADC_data[0];
+  ADC_data_B[iterator] = ADC_data[1];
+  ADC_data_C[iterator] = ADC_data[2];
+
+  iterator++; 
 }
 
 void ADCHandler::convert_data()
 {
-    //Пример от gpt
-    ADC_data_converted[0] = (float)ADC_data[0] * (3.3f / 4095.0f);
-    ADC_data_converted[1] = (float)ADC_data[1] * (3.3f / 4095.0f);
-    ADC_data_converted[2] = (float)ADC_data[2] * (3.3f / 4095.0f);
+    //Фазные токи, усреднение и вычисление
+    int avg_A = (ADC_data_A[0] + ADC_data_A[1] + ADC_data_A[2] + ADC_data_A[3] - 2048 * 4) / 4;
+    int avg_B = (ADC_data_B[0] + ADC_data_B[1] + ADC_data_B[2] + ADC_data_B[3] - 2048 * 4) / 4;
+    int avg_C = (ADC_data_C[0] + ADC_data_C[1] + ADC_data_C[2] + ADC_data_C[3] - 2048 * 4) / 4;
+    
+    /*
+                 (avg/2048) * 1.65
+    i_phase = -----------------------; Ku_measurment = 20; R_shunt = 0.005 Ohm.
+              R_shunt * Ku_measurment
+    */
+    
+    ADC_data_converted[0] = (((float)avg_A / 2048.0) * 1.65) / (0.005 * 20.0);
+    ADC_data_converted[1] = (((float)avg_B / 2048.0) * 1.65) / (0.005 * 20.0);
+    ADC_data_converted[2] = (((float)avg_C / 2048.0) * 1.65) / (0.005 * 20.0);
 }
 
 

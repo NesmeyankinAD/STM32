@@ -32,6 +32,7 @@ Output/Debug/Obj/MotorControlEXE/main.o: \
   D:\Programms\source\libcxx\include\limits \
   D:\Programms\source\libcxx\include\__undef_macros \
   E:\STM32_edu\Projects\MotorControlProject\ThreeSineWave.h \
+  E:\STM32_edu\Projects\MotorControlProject\ADCHandler.h \
   E:\STM32_edu\Projects\MotorControlProject\Observer.h \
   E:\STM32_edu\Projects\MotorControlProject\General.h \
   E:\STM32_edu\Projects\MotorControlProject\ControlSystem.h \
@@ -82,6 +83,5 @@ Output/Debug/Obj/MotorControlEXE/main.o: \
   D:\Programms\source\libcxx\include\__bit_reference \
   D:\Programms\source\libcxx\include\__split_buffer \
   E:\STM32_edu\Projects\MotorControlProject\Filter_I.h \
-  E:\STM32_edu\Projects\MotorControlProject\ADCHandler.h \
   E:\STM32_edu\Projects\MotorControlProject\FaultHandler.h \
   E:\STM32_edu\Projects\MotorControlProject\Trigger.h

@@ -74,4 +74,5 @@ Output/Debug/Obj/MotorControlEXE/General.o: \
   D:\Programms\source\libcxx\include\vector \
   D:\Programms\source\libcxx\include\__bit_reference \
   D:\Programms\source\libcxx\include\__split_buffer \
-  E:\STM32_edu\Projects\MotorControlProject\Filter_I.h
+  E:\STM32_edu\Projects\MotorControlProject\Filter_I.h \
+  E:\STM32_edu\Projects\MotorControlProject\ADCHandler.h

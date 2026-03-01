@@ -45,7 +45,8 @@ extern "C" void TIM2_IRQHandler()
         }
         }
 
-        
+        adc_handler.convert_data();//Преобразование данных из АЦП
+
         if (currentStrategy != nullptr) {currentStrategy -> execute();}
 
         TIM2 -> SR &= ~TIM_SR_CC2IF; // Очистка флага прерывания
@@ -56,7 +57,9 @@ extern "C" void TIM4_IRQHandler()
 {
   if (TIM4 -> SR & TIM_SR_UIF)
   {
-    us_counter++;
+    adc_handler.ADC_start();
+
+    us_counter += 50;//Cчёт по 50 мкс
   }
   
   TIM4 -> SR &= ~TIM_SR_UIF; // Очистка флага прерывания
@@ -136,4 +139,15 @@ observer.set_previous_time(us_counter);
 
 //--------Программа обработчика прерывания----------------------//
 
+}
+
+extern "C" void DMA1_Stream0_IRQHandler(void)
+{
+    if (DMA1 -> LISR & DMA_LISR_TCIF0)
+    {
+      DMA1 -> LIFCR |= DMA_LIFCR_CTCIF0; //Сброс флага окончания передачи
+      
+      adc_handler.ADC_stop();            //Остановка АЦП по событию завершения передачи DMA
+      adc_handler.copy_data();           //копирование из буфера DMA в буферы для фаз
+    }
 }
