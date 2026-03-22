@@ -18,9 +18,11 @@ x = 168000
 
 extern "C" void TIM2_IRQHandler()
 {
+  //Прерывание 5 кГц
+
   if (TIM2 -> SR & TIM_SR_CC2IF)   //Произошло совпадение CNT и CCR2 значений
     {
-        {//background operation
+      {//Background operation
         led_counter++;
 
         if(led_counter == 5000)
@@ -44,17 +46,21 @@ extern "C" void TIM2_IRQHandler()
         //DAC -> DHR12R2 = (three_phase_sin_generator.get_output_C() / 10) * 4095; //DAC2_OUT - GPIOA5
         }
         }
-
-        adc_handler.convert_data();//Преобразование данных из АЦП
-
-        if (currentStrategy != nullptr) {currentStrategy -> execute();}
-
-        TIM2 -> SR &= ~TIM_SR_CC2IF; // Очистка флага прерывания
+      
+        //---------------------------------------------------------------------//
+          adc_handler.convert_data();//Преобразование данных из АЦП
+        
+          if (currentStrategy != nullptr) {currentStrategy -> execute();}
+        //---------------------------------------------------------------------//
+      
+      TIM2 -> SR &= ~TIM_SR_CC2IF;//Очистка флага прерывания
     }
 }
 
 extern "C" void TIM4_IRQHandler()
 {
+  //Прерывание 20 кГц
+
   if (TIM4 -> SR & TIM_SR_UIF)
   {
     adc_handler.ADC_start();
@@ -63,22 +69,6 @@ extern "C" void TIM4_IRQHandler()
   }
   
   TIM4 -> SR &= ~TIM_SR_UIF; // Очистка флага прерывания
-}
-
-extern "C" void ADC_IRQHandler()
-{
-  /*В регистр сравнения TIM1:CCR1 записываем результат преобразования АЦП1, 
-  привёденный к значению регистра ARR = 28000 -1. Регистр TIM1:CCR1 и ADC1:DR 16-битные.
-                               TIMx:ARR
-  TIMx -> CCRy = ADCz -> DR --------------
-                             bit_rate_ADCz   
-  */
-
-  TIM1 -> CCR1 = (ADC1 -> DR * 28000) / 4096;
-  
-  //duty =  TIM1 -> CCR1;
-
-  NVIC_ClearPendingIRQ(ADC_IRQn); //Сброс флага запроса прерывания
 }
 
 extern "C" void EXTI1_IRQHandler(void)
@@ -143,11 +133,13 @@ observer.set_previous_time(us_counter);
 
 extern "C" void DMA1_Stream0_IRQHandler(void)
 {
-    if (DMA1 -> LISR & DMA_LISR_TCIF0)
-    {
-      DMA1 -> LIFCR |= DMA_LIFCR_CTCIF0; //Сброс флага окончания передачи
-      
-      adc_handler.ADC_stop();            //Остановка АЦП по событию завершения передачи DMA
-      adc_handler.copy_data();           //копирование из буфера DMA в буферы для фаз
-    }
+  //Работа ADC & DMA
+
+  if (DMA1 -> LISR & DMA_LISR_TCIF0)
+  {
+    DMA1 -> LIFCR |= DMA_LIFCR_CTCIF0; //Сброс флага окончания передачи
+    
+    adc_handler.ADC_stop();            //Остановка АЦП по событию завершения передачи DMA
+    adc_handler.copy_data();           //копирование из буфера DMA в буферы для фаз
+  }
 }

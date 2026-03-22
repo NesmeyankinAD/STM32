@@ -35,6 +35,7 @@ void ADCHandler::copy_data()
 void ADCHandler::convert_data()
 {
     //Фазные токи, усреднение и вычисление
+    //В схеме измерения есть смещение на 3.3/2 = 1.65 В (2048 уровней)
     int avg_A = (ADC_data_A[0] + ADC_data_A[1] + ADC_data_A[2] + ADC_data_A[3] - 2048 * 4) / 4;
     int avg_B = (ADC_data_B[0] + ADC_data_B[1] + ADC_data_B[2] + ADC_data_B[3] - 2048 * 4) / 4;
     int avg_C = (ADC_data_C[0] + ADC_data_C[1] + ADC_data_C[2] + ADC_data_C[3] - 2048 * 4) / 4;

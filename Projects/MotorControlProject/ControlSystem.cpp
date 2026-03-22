@@ -1,5 +1,17 @@
 #include "ControlSystem.h"
 
+void ControlSystem::configure(ControlSystemConfiguration& configurator)
+{
+  PI_current_loop.configure(configurator.PI_current_loop_configurator);
+}
+
+void ControlSystem::execute_current_loop()
+{
+  TIM1_Start();
+
+
+}
+
 void ControlSystem::execute()
 {
   TIM1_Start();

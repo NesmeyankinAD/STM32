@@ -1,5 +1,5 @@
 <!DOCTYPE CrossStudio_Project_File>
-<solution Name="MotorControlEXE" version="2" target="8">
+<solution Name="MotorControlEXE" target="8" version="2">
   <configuration
     Name="Debug"
     c_preprocessor_definitions="DEBUG"
@@ -66,6 +66,7 @@
     <folder Name="ControlSystem">
       <file file_name="ControlSystem.cpp" />
       <file file_name="ControlSystem.h" />
+      <file file_name="ControlSystemConfigurator.cpp" />
       <file file_name="General.cpp" />
       <file file_name="General.h" />
     </folder>
@@ -126,6 +127,10 @@
       <folder Name="Sources">
         <file file_name="InterruptHeandlers.cpp" />
       </folder>
+    </folder>
+    <folder Name="Protector">
+      <file file_name="Protector.cpp" />
+      <file file_name="Protector.h" />
     </folder>
     <folder Name="Script Files">
       <file file_name="STM32F4xx/Scripts/STM32F4xx_Target.js">

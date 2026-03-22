@@ -43,6 +43,10 @@ FaultHandler fault_handler;
 //Объект системы управления
 ControlSystem motor_control_system;
 
+//Конфигуратор системы управления
+//Здесь произойдёт запись параметров частей САУ в их объекты-конфигураторы
+ControlSystemConfiguration motor_control_system_configurator;
+
 //Указатель на стратегию
 ControlStrategy* currentStrategy = nullptr;
 
@@ -82,23 +86,27 @@ int main()
   }
 
   
-  //Конфигурация
+  //Конфигурация наблюдателя
   SynchroMotorObserverConfigurator observer_configurator(TSAMPLE);
 
-  __enable_irq();             //Разрешение прерываний
+  /* Конфигурация САУ 
+     Здесь произойдёт конфигурация всех составных частей САУ*/
+  motor_control_system.configure(motor_control_system_configurator);
 
-  //adc_handler.ADC_start();  //Запуск АЦП
-  TIM_Start();                //Запуск счётчиков - начало работы программы, расчёта системы управления
+  //Разрешение прерываний
+  __enable_irq();
+
+  //Запуск счётчиков - начало работы программы, расчёта системы управления
+  TIM_Start();
 
   
   while(1)
-  {
-    //adc_handler.convert_data();//Преобразование данных из АЦП
-    
+  {    
     /*Тут set(), reset() триггеров в fault_handler*/
+
     fault_handler.execute();
 
-    /*  Здесь в зависимости от внешних сигналов fault, enable_work (можно добавить ещё условия)
+    /*Здесь в зависимости от внешних сигналов fault, enable_work (можно добавить ещё условия)
     происходит определение текущей стратегии-режима работы всего устройства в целом.
       В прерывании TIM2 по указателю currentStrategy выполняется 
     конкретная стратегия stop, work и иные. Можно добавлять другие режимы работы. В стратегиях можно 

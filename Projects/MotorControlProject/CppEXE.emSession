@@ -2,7 +2,7 @@
 <session>
  <Bookmarks/>
  <Breakpoints groups="Breakpoints" active_group="Breakpoints">
-  <Exceptions set="MemManage;UsageFault_Coprocessor;UsageFault_CheckingError;UsageFault_StateError;BusFault;ExceptionEntryReturnFault;HardFault"/>
+  <Exceptions/>
  </Breakpoints>
  <ExecutionProfileWindow/>
  <FrameBuffer>
@@ -33,15 +33,12 @@
  <Project>
   <ProjectSessionItem path="MotorControlEXE"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE"/>
-  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ADCHandler"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystem"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystemBlocks"/>
-  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystemBlocks;Observer"/>
-  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;FaultHandler"/>
+  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystemBlocks;PIController"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;InterruptHeandlers"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;InterruptHeandlers;Headers"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;InterruptHeandlers;Sources"/>
-  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;System Files"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;SystemInitialization"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;SystemInitialization;Headers"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;SystemInitialization;Sources"/>
@@ -79,7 +76,7 @@
    <Watchpoint expression="service_counter" name="service_counter" radix="10" linenumber="0" filename="../MotorControlProject"/>
    <Watchpoint expression="currentStrategy" name="currentStrategy" radix="-1" linenumber="0" filename="../MotorControlProject"/>
    <Watchpoint expression="fault" name="fault" radix="16" linenumber="0" filename="../MotorControlProject"/>
-   <Watchpoint expression="enable_work" name="enable_work" radix="16" linenumber="53" filename="main.cpp"/>
+   <Watchpoint expression="enable_work" name="enable_work" radix="16" linenumber="57" filename="main.cpp"/>
   </Watches>
  </Watch1>
  <Watch2>
@@ -92,17 +89,15 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="6" y="95" useTextEdit="1" folds0="71,77,100" path="main.cpp" left="0" top="65" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="SystemInitialization.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="1" y="508" useTextEdit="1" folds0="3,72,108,143,265,280,317,426,440,476,508,524,525,574,592,619,634" path="SystemInitialization.cpp" left="0" top="478" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="34" y="62" useTextEdit="1" folds0="33" path="General.cpp" left="0" top="32" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="23" y="9" useTextEdit="1" path="ControlSystem.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="1" y="3" useTextEdit="1" path="ControlSystem.cpp" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="48" useTextEdit="1" folds0="3,22,33,39,68,84,104,124" path="InterruptHeandlers.cpp" left="0" top="18" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="23" y="4" useTextEdit="1" path="InterruptHeandlers.h" left="0" top="2" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="General.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="28" y="12" useTextEdit="1" path="ADCHandler.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="33" y="25" useTextEdit="1" path="ADCHandler.cpp" left="0" selected="1" top="8" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="53" y="46" useTextEdit="1" folds0="75,81,91,108" path="main.cpp" left="0" top="67" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="1" y="60" useTextEdit="1" folds0="3,24,35,41,60,74,94,114" path="InterruptHeandlers.cpp" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1" useTextEdit="1" folds0="3,4,38,63,74,109,117,230,231,246,282,283,337,351,365,384,385,395,405,442,461,474,475,490,540,558,585,600,613,618,626,631,639" path="SystemInitialization.cpp" left="0" top="24" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="57" y="44" useTextEdit="1" path="PIController.h" left="0" top="20" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="PIController.cpp" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="6" y="11" useTextEdit="1" path="ControlSystem.h" left="0" top="10" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="1" y="5" useTextEdit="1" path="ControlSystem.cpp" left="0" selected="1" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="18" y="25" useTextEdit="1" path="General.cpp" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="2" y="3" useTextEdit="1" path="ControlSystemConfigurator.cpp" left="0" top="0" codecName="Default"/>
  </Files>
  <EMStudioWindow activeProject="MotorControlEXE" fileDialogDefaultFilter="*" autoConnectTarget="ST-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="E:/STM32_edu/Projects/CppProject" debugSearchPath="" autoConnectCapabilities="3455"/>
 </session>
