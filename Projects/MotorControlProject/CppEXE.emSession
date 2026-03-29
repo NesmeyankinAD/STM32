@@ -2,7 +2,13 @@
 <session>
  <Bookmarks/>
  <Breakpoints groups="Breakpoints" active_group="Breakpoints">
-  <Exceptions/>
+  <BreakpointListItem trigger="" line="140" counter="0" hardwareBreakpoint="" isFunctionBreakpoint="false" action="" expression="" stopAll="false" group="Breakpoints" type="Breakpoint" state="2" filename="InterruptHeandlers.cpp" useHWbreakpoint="false"/>
+  <BreakpointListItem trigger="" line="148" counter="0" hardwareBreakpoint="" isFunctionBreakpoint="false" action="" expression="" stopAll="false" group="Breakpoints" type="Breakpoint" state="2" filename="InterruptHeandlers.cpp" useHWbreakpoint="false"/>
+  <BreakpointListItem trigger="" line="154" counter="0" hardwareBreakpoint="" isFunctionBreakpoint="false" action="" expression="" stopAll="false" group="Breakpoints" type="Breakpoint" state="2" filename="InterruptHeandlers.cpp" useHWbreakpoint="false"/>
+  <BreakpointListItem trigger="" line="161" counter="0" hardwareBreakpoint="" isFunctionBreakpoint="false" action="" expression="" stopAll="false" group="Breakpoints" type="Breakpoint" state="2" filename="InterruptHeandlers.cpp" useHWbreakpoint="false"/>
+  <Exceptions>
+   <Group group="V7M Exceptions" set="BusFault;ExceptionEntryReturnFault;HardFault;MemManage;UsageFault_CheckingError;UsageFault_Coprocessor;UsageFault_StateError"/>
+  </Exceptions>
  </Breakpoints>
  <ExecutionProfileWindow/>
  <FrameBuffer>
@@ -13,7 +19,7 @@
  <Memory1>
   <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" viewType="4" addressOrder="0" columnsText="" refreshPeriod="0" name="Empty C++ Project_Debug" sizeText="" addressText=""/>
   <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" viewType="4" addressOrder="0" columnsText="" refreshPeriod="0" name="CppEXE_Debug" sizeText="" addressText=""/>
-  <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" viewType="4" addressOrder="0" columnsText="" refreshPeriod="0" name="MotorControlEXE_Debug" sizeText="" addressText=""/>
+  <MemoryWindow addressSpace="" dataSize="4" autoEvaluate="0" viewMode="0" viewType="4" addressOrder="0" columnsText="" refreshPeriod="0" name="MotorControlEXE_Debug" sizeText="" addressText="currentStrategy->_vptr$ControlStrategy"/>
  </Memory1>
  <Memory2>
   <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" viewType="4" addressOrder="0" columnsText="" refreshPeriod="0" name="Empty C++ Project_Debug" sizeText="" addressText=""/>
@@ -33,9 +39,10 @@
  <Project>
   <ProjectSessionItem path="MotorControlEXE"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE"/>
+  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ADCHandler"/>
+  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;CMSIS Files"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystem"/>
-  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystemBlocks"/>
-  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystemBlocks;PIController"/>
+  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;Delay"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;InterruptHeandlers"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;InterruptHeandlers;Headers"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;InterruptHeandlers;Sources"/>
@@ -46,7 +53,7 @@
  <Register1>
   <RegisterWindow invisibleNodes="" visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/MSP;CPU/PSP;CPU/PRIMASK;CPU/BASEPRI;CPU/FAULTMASK;CPU/CONTROL;CPU/internal" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context" name="Empty C++ Project_Debug" decimalNodes="" octalNodes="" unsignedNodes=""/>
   <RegisterWindow invisibleNodes="" visibleNodes="DAC/CR;DAC/SWTRIGR;DAC/DHR12R1;DAC/DHR12L1;DAC/DHR8R1;DAC/DHR12R2;DAC/DHR12L2;DAC/DHR8R2;DAC/DHR12RD;DAC/DHR12LD;DAC/DHR8RD;DAC/DOR1;DAC/DOR2;DAC/SR" binaryNodes="" asciiNodes="" openNodes="DAC;DAC/DHR12R1" name="CppEXE_Debug" decimalNodes="DAC/DHR12R1/DACC1DHR" octalNodes="" unsignedNodes=""/>
-  <RegisterWindow invisibleNodes="" visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/MSP;CPU/PSP;CPU/PRIMASK;CPU/BASEPRI;CPU/FAULTMASK;CPU/CONTROL;CPU/internal" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context" name="MotorControlEXE_Debug" decimalNodes="" octalNodes="" unsignedNodes=""/>
+  <RegisterWindow invisibleNodes="" visibleNodes="TIM1/CR1;TIM1/CR2;TIM1/SMCR;TIM1/DIER;TIM1/SR;TIM1/EGR;TIM1/CCMR1_Output;TIM1/CCMR1_Input;TIM1/CCMR2_Output;TIM1/CCMR2_Input;TIM1/CCER;TIM1/CNT;TIM1/PSC;TIM1/ARR;TIM1/CCR1;TIM1/CCR2;TIM1/CCR3;TIM1/CCR4;TIM1/DCR;TIM1/DMAR;TIM1/RCR;TIM1/BDTR;GPIOC/MODER;GPIOC/OTYPER;GPIOC/OSPEEDR;GPIOC/PUPDR;GPIOC/IDR;GPIOC/ODR;GPIOC/BSRR;GPIOC/LCKR;GPIOC/AFRL;GPIOC/AFRH;DMA2/LISR;DMA2/HISR;DMA2/LIFCR;DMA2/HIFCR;DMA2/S0CR;DMA2/S0NDTR;DMA2/S0PAR;DMA2/S0M0AR;DMA2/S0M1AR;DMA2/S0FCR;DMA2/S1CR;DMA2/S1NDTR;DMA2/S1PAR;DMA2/S1M0AR;DMA2/S1M1AR;DMA2/S1FCR;DMA2/S2CR;DMA2/S2NDTR;DMA2/S2PAR;DMA2/S2M0AR;DMA2/S2M1AR;DMA2/S2FCR;DMA2/S3CR;DMA2/S3NDTR;DMA2/S3PAR;DMA2/S3M0AR;DMA2/S3M1AR;DMA2/S3FCR;DMA2/S4CR;DMA2/S4NDTR;DMA2/S4PAR;DMA2/S4M0AR;DMA2/S4M1AR;DMA2/S4FCR;DMA2/S5CR;DMA2/S5NDTR;DMA2/S5PAR;DMA2/S5M0AR;DMA2/S5M1AR;DMA2/S5FCR;DMA2/S6CR;DMA2/S6NDTR;DMA2/S6PAR;DMA2/S6M0AR;DMA2/S6M1AR;DMA2/S6FCR;DMA2/S7CR;DMA2/S7NDTR;DMA2/S7PAR;DMA2/S7M0AR;DMA2/S7M1AR;DMA2/S7FCR;ADC1/SR;ADC1/CR1;ADC1/CR2;ADC1/SMPR1;ADC1/SMPR2;ADC1/JOFR1;ADC1/JOFR2;ADC1/JOFR3;ADC1/JOFR4;ADC1/HTR;ADC1/LTR;ADC1/SQR1;ADC1/SQR2;ADC1/SQR3;ADC1/JSQR;ADC1/JDR1;ADC1/JDR2;ADC1/JDR3;ADC1/JDR4;ADC1/DR" binaryNodes="" asciiNodes="" openNodes="TIM1/CNT;TIM1/CCR1;GPIOC/BSRR;DMA2" name="MotorControlEXE_Debug" decimalNodes="" octalNodes="" unsignedNodes="TIM1/CNT;TIM1/CCR1/CCR1"/>
  </Register1>
  <Register2>
   <RegisterWindow invisibleNodes="" visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/MSP;CPU/PSP;CPU/PRIMASK;CPU/BASEPRI;CPU/FAULTMASK;CPU/CONTROL;CPU/internal" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context" name="Empty C++ Project_Debug" decimalNodes="" octalNodes="" unsignedNodes=""/>
@@ -74,9 +81,11 @@
    <Watchpoint expression="us_counter" name="us_counter" radix="11" linenumber="0" filename="../MotorControlProject"/>
    <Watchpoint expression="observer" name="observer" radix="11" linenumber="0" filename="../MotorControlProject"/>
    <Watchpoint expression="service_counter" name="service_counter" radix="10" linenumber="0" filename="../MotorControlProject"/>
-   <Watchpoint expression="currentStrategy" name="currentStrategy" radix="-1" linenumber="0" filename="../MotorControlProject"/>
-   <Watchpoint expression="fault" name="fault" radix="16" linenumber="0" filename="../MotorControlProject"/>
-   <Watchpoint expression="enable_work" name="enable_work" radix="16" linenumber="57" filename="main.cpp"/>
+   <Watchpoint expression="motor_control_system.duty_cycle_debug" name="motor_control_system.duty_cycle_debug" radix="11" linenumber="0" filename="../MotorControlProject"/>
+   <Watchpoint expression="strategy_handler.current_strategy" name="strategy_handler.current_strategy" radix="16" linenumber="0" filename="../MotorControlProject"/>
+   <Watchpoint expression="enable_work" name="enable_work" radix="-1" linenumber="62" filename="main.cpp"/>
+   <Watchpoint expression="adc_handler.ADC_data_converted" name="adc_handler.ADC_data_converted" radix="-1" linenumber="0" filename="../MotorControlProject"/>
+   <Watchpoint expression="adc_handler.ADC_data" name="adc_handler.ADC_data" radix="-1" linenumber="0" filename=""/>
   </Watches>
  </Watch1>
  <Watch2>
@@ -89,15 +98,14 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="53" y="46" useTextEdit="1" folds0="75,81,91,108" path="main.cpp" left="0" top="67" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="1" y="60" useTextEdit="1" folds0="3,24,35,41,60,74,94,114" path="InterruptHeandlers.cpp" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1" useTextEdit="1" folds0="3,4,38,63,74,109,117,230,231,246,282,283,337,351,365,384,385,395,405,442,461,474,475,490,540,558,585,600,613,618,626,631,639" path="SystemInitialization.cpp" left="0" top="24" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="57" y="44" useTextEdit="1" path="PIController.h" left="0" top="20" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="PIController.cpp" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="6" y="11" useTextEdit="1" path="ControlSystem.h" left="0" top="10" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="1" y="5" useTextEdit="1" path="ControlSystem.cpp" left="0" selected="1" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="18" y="25" useTextEdit="1" path="General.cpp" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="2" y="3" useTextEdit="1" path="ControlSystemConfigurator.cpp" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="25" y="38" useTextEdit="1" folds0="80,86,96,114" path="main.cpp" left="0" selected="1" top="30" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="4" y="52" useTextEdit="1" folds0="4,39,85,121,242" path="SystemInitialization.cpp" left="0" top="20" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="153" useTextEdit="1" folds0="3,24,35,41,74,94,114" path="InterruptHeandlers.cpp" left="0" top="52" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="52" y="19" useTextEdit="1" path="ADCHandler.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="43" y="6" useTextEdit="1" folds0="12" path="ADCHandler.cpp" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="InterruptHeandlers.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="8" y="5862" useTextEdit="1" path="STM32F4xx/Device/Include/stm32f407xx.h" left="0" top="5847" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="89" useTextEdit="1" path="General.cpp" left="0" top="71" codecName="Default"/>
  </Files>
- <EMStudioWindow activeProject="MotorControlEXE" fileDialogDefaultFilter="*" autoConnectTarget="ST-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="E:/STM32_edu/Projects/CppProject" debugSearchPath="" autoConnectCapabilities="3455"/>
+ <EMStudioWindow activeProject="MotorControlEXE" fileDialogDefaultFilter="*" autoConnectTarget="ST-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="E:/STM32_edu/Projects/CppProject" debugSearchPath="" autoConnectCapabilities="3967"/>
 </session>

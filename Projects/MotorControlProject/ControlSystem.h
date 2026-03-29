@@ -25,6 +25,9 @@ public:
 
 class ControlSystem
 {
+public:
+  float duty_cycle_debug{0.0};  
+
 private:
   PIController PI_current_loop;
 

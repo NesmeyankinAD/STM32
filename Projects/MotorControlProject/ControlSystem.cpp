@@ -16,6 +16,9 @@ void ControlSystem::execute()
 {
   TIM1_Start();
 
+  GPIOC -> BSRR &= ~(1 << 20); //PWM Enable - 0
+  
+  TIM1 -> CCR1 = (uint32_t)((duty_cycle_debug/100.0) * 16800.0);
 }
 
 void ControlSystem::stop()

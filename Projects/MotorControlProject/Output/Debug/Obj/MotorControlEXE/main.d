@@ -205,6 +205,7 @@ Output/Debug/Obj/MotorControlEXE/main.o: \
   D:\Programms\SEGGER\include\stdlib.h \
   E:\STM32_edu\Projects\MotorControlProject\ThreeSineWave.h \
   E:\STM32_edu\Projects\MotorControlProject\ADCHandler.h \
+  E:\STM32_edu\Projects\MotorControlProject\Delay.cpp \
   E:\STM32_edu\Projects\MotorControlProject\Observer.h \
   E:\STM32_edu\Projects\MotorControlProject\General.h \
   E:\STM32_edu\Projects\MotorControlProject\ControlSystem.h \

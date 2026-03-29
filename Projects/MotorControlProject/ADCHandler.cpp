@@ -1,17 +1,54 @@
 #include "stm32f4xx.h"
 #include "ADCHandler.h"
 
+
 void ADCHandler::preparing_DMA()
 {
-  DMA1_Stream0 -> M0AR = (uint32_t)&(ADC_data); //Указание адреса памяти, куда DMA будет складывать данные из АЦП
+  DMA2_Stream0 -> M0AR = (uint32_t)ADC_data; //Указание адреса памяти, куда DMA будет складывать данные из АЦП
 
-  DMA1_Stream0 -> CR |= DMA_SxCR_EN;            //Включение DMA
+  //DMA2_Stream0 -> CR |= DMA_SxCR_EN;            //Включение DMA
 }
 
 void ADCHandler::ADC_start()
 {
-  ADC1 -> CR2 |= ADC_CR2_ADON;
-  ADC1 -> CR2 |= ADC_CR2_SWSTART; //Запуск конвертаций АЦП
+// ✅ 1. Остановить DMA если он был включен
+  DMA2_Stream0 -> CR &= ~DMA_SxCR_EN;
+  
+  // Ждать остановки DMA (с таймаутом для безопасности)
+  volatile int timeout = 10000;
+  while((DMA2_Stream0 -> CR & DMA_SxCR_EN) && (--timeout > 0)) 
+  { 
+    __NOP(); 
+  }
+  
+  // ✅ 2. Сбросить ВСЕ флаги DMA Stream 0
+  DMA2 -> LIFCR = DMA_LIFCR_CTCIF0   |  // Transfer Complete
+                  DMA_LIFCR_CHTIF0   |  // Half Transfer
+                  DMA_LIFCR_CTEIF0   |  // Transfer Error
+                  DMA_LIFCR_CFEIF0;     // FIFO Error
+  
+  // ✅ 3. Перезагрузить количество данных
+  DMA2_Stream0 -> NDTR = 3;
+  
+  // ✅ 4. Включить DMA
+  DMA2_Stream0 -> CR |= DMA_SxCR_EN;
+  
+  // ✅ 5. Убедиться, что ADC включен
+  if((ADC1 -> CR2 & ADC_CR2_ADON) == 0)
+  {
+    ADC1 -> CR2 |= ADC_CR2_ADON;
+    for(volatile int i = 0; i < 100; i++) { __NOP(); }
+  }
+  
+  // ✅ 6. Запустить ADC конверсию
+  ADC1 -> CR2 |= ADC_CR2_SWSTART;
+
+  //ADC1 -> CR2 |= ADC_CR2_ADON;
+  //
+  //int i = 100;
+  //while(i--) {__NOP();}
+  //
+  //ADC1 -> CR2 |= ADC_CR2_SWSTART; //Запуск конвертаций АЦП
 }
 
 void ADCHandler::ADC_stop()

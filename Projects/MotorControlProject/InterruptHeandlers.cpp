@@ -131,15 +131,35 @@ observer.set_previous_time(us_counter);
 
 }
 
-extern "C" void DMA1_Stream0_IRQHandler(void)
+extern "C" void DMA2_Stream0_IRQHandler(void)
 {
   //Работа ADC & DMA
 
-  if (DMA1 -> LISR & DMA_LISR_TCIF0)
+  if (DMA2 -> LISR & DMA_LISR_TCIF0)
   {
-    DMA1 -> LIFCR |= DMA_LIFCR_CTCIF0; //Сброс флага окончания передачи
+    DMA2 -> LIFCR = DMA_LIFCR_CTCIF0; //Сброс флага окончания передачи
     
-    adc_handler.ADC_stop();            //Остановка АЦП по событию завершения передачи DMA
+    //adc_handler.ADC_stop();            //Остановка АЦП по событию завершения передачи DMA
     adc_handler.copy_data();           //копирование из буфера DMA в буферы для фаз
+  }
+
+  if (DMA2->LISR & DMA_LISR_HTIF0)      // Half Transfer
+  {
+    DMA2->LIFCR = DMA_LIFCR_CHTIF0;     // Сброс флага
+    // Можно добавить счётчик для отладки
+  }
+  
+  if (DMA2->LISR & DMA_LISR_TEIF0)      // Transfer Error ❌
+  {
+    DMA2->LIFCR = DMA_LIFCR_CTEIF0;     // Сброс флага
+    // ОШИБКА ПЕРЕДАЧИ!
+    //while(1); // Остановить для отладки
+  }
+  
+  if (DMA2->LISR & DMA_LISR_FEIF0)      // FIFO Error ❌
+  {
+    DMA2->LIFCR = DMA_LIFCR_CFEIF0;     // Сброс флага
+    // ОШИБКА FIFO!
+    //while(1); // Остановить для отладки
   }
 }

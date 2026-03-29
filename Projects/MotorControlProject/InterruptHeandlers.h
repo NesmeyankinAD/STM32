@@ -35,4 +35,4 @@ extern "C" void EXTI1_IRQHandler();
 extern "C" void EXTI2_IRQHandler();
 extern "C" void EXTI3_IRQHandler();
 
-extern "C" void DMA1_Stream0_IRQHandler();
+extern "C" void DMA2_Stream0_IRQHandler();

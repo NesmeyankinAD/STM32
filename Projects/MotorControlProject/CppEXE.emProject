@@ -2,6 +2,7 @@
 <solution Name="MotorControlEXE" target="8" version="2">
   <configuration
     Name="Debug"
+    arm_stm32cubeprogrammer_directory="D:/Programms/STM32/Programmer"
     c_preprocessor_definitions="DEBUG"
     gcc_cplusplus_language_standard="c++14"
     gcc_debugging_level="Level 3"
@@ -47,7 +48,7 @@
       target_reset_script="Reset();" />
     <configuration
       Name="Debug"
-      arm_stm32cubeprogrammer_directory="$(StudioDir)/STM32/Programmer"
+      arm_stm32cubeprogrammer_directory="D:/Programms/STM32/Programmer"
       debug_target_connection="ST-Link"
       gcc_cplusplus_language_standard="c++14" />
     <folder Name="ADCHandler">
@@ -115,6 +116,10 @@
         <file file_name="Trigger.cpp" />
         <file file_name="Trigger.h" />
       </folder>
+    </folder>
+    <folder Name="Delay">
+      <file file_name="Delay.cpp" />
+      <file file_name="Delay.h" />
     </folder>
     <folder Name="FaultHandler">
       <file file_name="FaultHandler.cpp" />

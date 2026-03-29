@@ -21,4 +21,5 @@ Output/Debug/Obj/MotorControlEXE/ADCHandler.o: \
   E:\STM32_edu\Projects\MotorControlProject\CMSIS_5\CMSIS\Core\Include\cmsis_gcc.h \
   E:\STM32_edu\Projects\MotorControlProject\CMSIS_5\CMSIS\Core\Include\mpu_armv7.h \
   E:\STM32_edu\Projects\MotorControlProject\STM32F4xx\Device\Include\system_stm32f4xx.h \
-  E:\STM32_edu\Projects\MotorControlProject\ADCHandler.h
+  E:\STM32_edu\Projects\MotorControlProject\ADCHandler.h \
+  E:\STM32_edu\Projects\MotorControlProject\Delay.cpp

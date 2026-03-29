@@ -8,7 +8,7 @@ void TIM2_Init();
 void TIM4_Init();
 void DAC_Init();
 void EXTI_Init();
-void ADC1_DMA1_Init();
+void ADC1_DMA2_Init();
 
 void TIM_Start();
 void TIM1_Start();

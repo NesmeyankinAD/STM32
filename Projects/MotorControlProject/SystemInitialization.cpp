@@ -1,9 +1,9 @@
 #include "SystemInitialization.h"
 
-void ADC1_DMA1_Init()
+void ADC1_DMA2_Init()
 {
   /*Abstract
-  Measurment of phase currents by ADC1 and DMA1_Stream0. 
+  Measurment of phase currents by ADC1 and DMA2_Stream0. 
   PC0 - IN10 
   PC1 - IN11
   PC2 - IN12
@@ -11,7 +11,7 @@ void ADC1_DMA1_Init()
 
   RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOCEN;       //Тактирование GPIOC
   RCC -> APB2ENR |= RCC_APB2ENR_ADC1EN;        //Тактирование ADC1
-  RCC -> AHB1ENR |= RCC_AHB1ENR_DMA1EN;        //Тактирование DMA1
+  RCC -> AHB1ENR |= RCC_AHB1ENR_DMA2EN;        //Тактирование DMA2
                                                
                                                //Очистка регистра
   GPIOC -> MODER &= ~(GPIO_MODER_MODER0_Msk |  
@@ -23,49 +23,60 @@ void ADC1_DMA1_Init()
                       GPIO_MODER_MODER2);                    
                                                              
                                                              
-  DMA1_Stream0 -> CR   = 0;                                    
-  DMA1_Stream0 -> PAR  = (uint32_t)&(ADC1 -> DR);            //Периферийный адрес — регистр данных ADC
-  DMA1_Stream0 -> NDTR = 3;                                  //3 элемента (по 1 на канал)
-
-
-  DMA1_Stream0 -> CR |= DMA_SxCR_MINC;                       // инкремент addr при передаче
-  DMA1_Stream0 -> CR |= DMA_SxCR_PSIZE_0 | DMA_SxCR_MSIZE_0; // Размер данных — 16 бит
-  //DMA1_Stream0 -> CR |= DMA_SxCR_CIRC;                       // Круговой режим
-  DMA1_Stream0 -> CR |= (0 << DMA_SxCR_CHSEL_Pos);           // Канал 0
-  DMA1_Stream0 -> CR |= DMA_SxCR_DIR_0;                      // Периферия -> Память
+  DMA2_Stream0 -> CR   = 0;                                    
+  DMA2_Stream0 -> PAR  = (uint32_t)&(ADC1 -> DR);            //Периферийный адрес — регистр данных ADC
+  DMA2_Stream0 -> NDTR = 3;                                  //3 элемента (по 1 на канал)
+     
+     
+  DMA2_Stream0 -> CR |= DMA_SxCR_MINC;                       // инкремент addr при передаче
+  DMA2_Stream0 -> CR |= DMA_SxCR_PSIZE_0 | DMA_SxCR_MSIZE_0; // Размер данных — 16 бит
+  DMA2_Stream0 -> CR |= (0 << DMA_SxCR_CHSEL_Pos);           // Канал 0
+  DMA2_Stream0 -> CR &= ~(DMA_SxCR_DIR_0 
+                        | DMA_SxCR_DIR_1);                   //00 - Периферия -> Память
   
-  DMA1_Stream0 -> CR |= DMA_SxCR_TCIE;                       //Прерывание по завершению передачи        
+  DMA2_Stream0 -> CR |= DMA_SxCR_TCIE;                       //Прерывание по завершению передачи
+  NVIC_EnableIRQ(DMA2_Stream0_IRQn);                         //Включение прерывания в NVIC
 
   {//Вынести в отдельную функцию, инициализирующую буфер данных АЦП
-  //DMA1_Stream0 -> M0AR = (uint32_t)&adcBuffer;
+  //DMA2_Stream0 -> M0AR = (uint32_t)&adcBuffer;
   //// Включение DMA
-  //DMA1_Stream0->CR |= DMA_SxCR_EN;
+  //DMA2_Stream0 -> CR |= DMA_SxCR_EN;
   }
 
   ADC1 -> CR1 = 0;              
   ADC1 -> CR2 = 0;              
                                 
-  ADC1 -> CR1 |= ADC_CR1_SCAN;             //Включить сканирование (нужно для оцифровки последовательности)
-                                           
-  ADC1 -> CR2 &= ~(ADC_CR2_CONT);          //Одиночный режим
-  ADC1 -> CR2 |= ADC_CR2_DMA;              //Включить DMA
-                                           
-  ADC1 -> SQR1 &= ~(ADC_SQR1_L);           
-  ADC1 -> SQR1 |= (2 << ADC_SQR1_L_Pos);   //Длина последовательности преобразований 3 канала - 0,1,2
-                                           
+  ADC1 -> CR1 |= ADC_CR1_SCAN;                   //Включить сканирование (нужно для оцифровки последовательности)
+                                                 
+  ADC1 -> CR2 &= ~(ADC_CR2_CONT);                //Одиночный режим
+  ADC1 -> CR2 |= ADC_CR2_DMA;                    //Включить DMA
+  //ADC1 -> CR2 |= ADC_CR2_DDS;                    //DMA Disable Selection
+                                                 
+  ADC1 -> SQR1 &= ~(ADC_SQR1_L);                 
+  ADC1 -> SQR1 |= (2 << ADC_SQR1_L_Pos);         //Длина последовательности преобразований 3 канала - 0,1,2
+  ADC1 -> SQR3  = (12 << 10) | (11 << 5) | (10); //Последовательность преобразований 10 -> 11 -> 12 каналы АЦП
+                                                 
   ADC1 -> SMPR1 &= ~(ADC_SMPR1_SMP10_Msk | 
                      ADC_SMPR1_SMP11_Msk | 
-                     ADC_SMPR1_SMP12_Msk); //Очистка и установка sampling time = 3 samples
-                                           
-  ADC1 -> CR2 |= ADC_CR2_ADON;             //Включение АЦП, но не запуск конвертаций
+                     ADC_SMPR1_SMP12_Msk);
 
+  ADC1 -> SMPR1 |= (3 << ADC_SMPR1_SMP10_Pos) |  // 56 cycles
+                   (3 << ADC_SMPR1_SMP11_Pos) |
+                   (3 << ADC_SMPR1_SMP12_Pos);
+                                                 
+  //ADC1 -> CR2 |= ADC_CR2_ADON;                 //Включение АЦП, но не запуск конвертаций
 
+  ADC1 -> CR1 &= ~ADC_CR1_EOCIE;                 //Отключить EOC interrupt
+
+  ADC1 -> CR2 |= ADC_CR2_ADON;
+  for(volatile int i = 0; i < 1000; i++) { __NOP(); }
+ 
 
   {//Вынести в отдельную функцию, инициализирующую буфер данных АЦП
 
-  //DMA1_Stream0 -> M0AR = (uint32_t)&adcBuffer;//Указание адреса памяти, куда DMA будет складывать данные из АЦП
+  //DMA2_Stream0 -> M0AR = (uint32_t)&adcBuffer;//Указание адреса памяти, куда DMA будет складывать данные из АЦП
 
-  //DMA1_Stream0->CR |= DMA_SxCR_EN;            //Включение DMA
+  //DMA2_Stream0 -> CR |= DMA_SxCR_EN;            //Включение DMA
 
   //ADC1->CR2 |= ADC_CR2_SWSTART;               //Запуск конвертаций АЦП
   }
@@ -75,6 +86,7 @@ void GPIO_Init()
 {
   RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOAEN; //Включение тактирования порта А 
   RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOEEN; //Включение тактирования порта Е
+  RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOCEN; //Включение тактирования порта C
 
 
   /*------Кнопки-------*/
@@ -97,11 +109,11 @@ void GPIO_Init()
   GPIOA-> MODER &= ~GPIO_MODER_MODE1_1;  // Установка режима работы пина GPIOA_1 на вход (EXTI1)
   GPIOA-> MODER &= ~GPIO_MODER_MODE2_1;  // Установка режима работы пина GPIOA_2 на вход (EXTI2)
   GPIOA-> MODER &= ~GPIO_MODER_MODE3_1;  // Установка режима работы пина GPIOA_3 на вход (EXTI3)
-                                                  
-  //GPIOA -> PUPDR |= GPIO_PUPDR_PUPDR1_1
-  //                | GPIO_PUPDR_PUPDR2_1
-  //                | GPIO_PUPDR_PUPDR3_1; // Подтяжка пинов GPIOA к GND
-       
+
+  /*------Выход PWM Enable-------*/
+  GPIOC -> MODER |= GPIO_MODER_MODE4_0;  // Установка режима работы пина GPIOC_4 на выход     
+  GPIOC -> PUPDR |= GPIO_PUPDR_PUPDR4_0; // Подтяжка пина GPIOC_4 к VCC
+  GPIOC -> OTYPER|= GPIO_OTYPER_OT4;     // Open-drain GPIOC_4
 
 }//GPIO_Init()
 
@@ -250,7 +262,7 @@ void TIM1_Init()
 
   //GPIOE -> MODER |= GPIO_MODER_MODE7_1;             //Режим альтернативной функции для указанных пинов
   GPIOE -> MODER |= GPIO_MODER_MODE8_1;               
-  GPIOE -> MODER |= GPIO_MODER_MODE9_1;               
+  //GPIOE -> MODER |= GPIO_MODER_MODE9_1;               
   //GPIOE -> MODER |= GPIO_MODER_MODE10_1;            
   //GPIOE -> MODER |= GPIO_MODER_MODE11_1;            
   //GPIOE -> MODER |= GPIO_MODER_MODE12_1;            
@@ -260,7 +272,7 @@ void TIM1_Init()
                                                       
   //GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED7_1;       //High speed mode для указанных пинов
   GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED8_1;         
-  GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED9_1;         
+  //GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED9_1;         
   //GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED10_1;      
   //GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED11_1;      
   //GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED12_1;      
@@ -270,7 +282,7 @@ void TIM1_Init()
                                                       
   //GPIOE -> AFR[0]  |= (1 << GPIO_AFRL_AFSEL7_Pos);  //AF1 у указанных пинов
   GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL8_Pos);
-  GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL9_Pos);
+  //GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL9_Pos);
   //GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL10_Pos);
   //GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL11_Pos);
   //GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL12_Pos);
@@ -318,7 +330,7 @@ void TIM1_Init()
   TIM1 -> PSC    = 1-1;               //Prescaler; частота тактирования 168 МГц 
   TIM1 -> CR1   |= TIM_CR1_CMS;       //Режим выравнивания по центру
   TIM1 -> ARR    = 16800- 1;          //Частота ШИМ 5кГц
-  TIM1 -> CCR1   = 8400;              //Duty cycle, будем изменять в программе
+  TIM1 -> CCR1   = 0;                 //Duty cycle, будем изменять в программе
   TIM1 -> CCR2   = 0;                 //Duty cycle, будем изменять в программе
   TIM1 -> CCR3   = 0;                 //Duty cycle, будем изменять в программе, 
   }

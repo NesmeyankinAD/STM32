@@ -35,7 +35,11 @@ ThreeSineWave   three_phase_sin_generator;
 SynchroMotorObserver observer;
 
 //Обработчик АЦП
-ADCHandler adc_handler;
+#pragma location = 0x20000000  // Явный адрес в SRAM
+uint16_t ADC_DMA_data[3];
+
+#pragma location = default
+ADCHandler adc_handler(ADC_DMA_data); 
 
 //Обработчик ошибок
 FaultHandler fault_handler;
@@ -54,8 +58,9 @@ ControlStrategy* currentStrategy = nullptr;
 StrategyHandler strategy_handler(&motor_control_system);
 
 
-bool enable_work = false;
-bool fault       = false;
+volatile bool enable_work = 0;
+volatile bool enable_PWM  = 0;
+volatile bool fault       = 0;
 
 
 int main()
@@ -70,9 +75,9 @@ int main()
   TIM2_Init();
   TIM4_Init();
   EXTI_Init();
-  ADC1_DMA1_Init(); adc_handler.preparing_DMA();//Инициализация АЦП и памяти для DMA
+  ADC1_DMA2_Init(); adc_handler.preparing_DMA();//Инициализация АЦП и памяти для DMA
   
-
+ 
   {//one-phase generator configuration
   SineWaveConfiguration one_phase_sin_generator_config(0.001, 5.0, 50.0, 5.0, 0.0);
 
@@ -93,6 +98,7 @@ int main()
      Здесь произойдёт конфигурация всех составных частей САУ*/
   motor_control_system.configure(motor_control_system_configurator);
 
+
   //Разрешение прерываний
   __enable_irq();
 
@@ -104,7 +110,7 @@ int main()
   {    
     /*Тут set(), reset() триггеров в fault_handler*/
 
-    fault_handler.execute();
+    //fault_handler.execute();
 
     /*Здесь в зависимости от внешних сигналов fault, enable_work (можно добавить ещё условия)
     происходит определение текущей стратегии-режима работы всего устройства в целом.

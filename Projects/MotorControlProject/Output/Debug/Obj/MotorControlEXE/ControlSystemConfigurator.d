@@ -587,4 +587,5 @@ Output/Debug/Obj/MotorControlEXE/ControlSystemConfigurator.o: \
   D:\Programms\SEGGER\source\libcxx\include\cstdarg \
   D:\Programms\SEGGER\include\stdarg.h \
   E:\STM32_edu\Projects\MotorControlProject\Filter_I.h \
-  E:\STM32_edu\Projects\MotorControlProject\ADCHandler.h
+  E:\STM32_edu\Projects\MotorControlProject\ADCHandler.h \
+  E:\STM32_edu\Projects\MotorControlProject\Delay.cpp
