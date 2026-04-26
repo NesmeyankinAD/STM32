@@ -9,6 +9,10 @@
 #include "Filter_I.h"
 #include "ADCHandler.h"
 
+#define FPWM       5000.0
+#define TPWM       1/FPWM
+#define TIMESAMPLE TPWM
+
 class ControlSystemConfiguration
 {
 //Объект-конфигуратор САУ
@@ -27,6 +31,13 @@ class ControlSystem
 {
 public:
   float duty_cycle_debug{0.0};  
+  float I_ref{0.0};
+
+public:
+  ADCHandler* adc; 
+
+public:
+  ControlSystem(ADCHandler* adc_external);
 
 private:
   PIController PI_current_loop;

@@ -50,7 +50,7 @@ void ADC1_DMA2_Init()
                                                  
   ADC1 -> CR2 &= ~(ADC_CR2_CONT);                //Одиночный режим
   ADC1 -> CR2 |= ADC_CR2_DMA;                    //Включить DMA
-  //ADC1 -> CR2 |= ADC_CR2_DDS;                    //DMA Disable Selection
+  ADC1 -> CR2 |= ADC_CR2_DDS;                    //DMA Disable Selection
                                                  
   ADC1 -> SQR1 &= ~(ADC_SQR1_L);                 
   ADC1 -> SQR1 |= (2 << ADC_SQR1_L_Pos);         //Длина последовательности преобразований 3 канала - 0,1,2
@@ -348,8 +348,9 @@ void TIM1_Init()
   {
   //Канал CH1 - выход
   {
-  TIM1 -> CCMR1 |= TIM_CCMR1_OC1M_1 
-                |  TIM_CCMR1_OC1M_2;  //110 - PWM Mode 1 для CH1
+  TIM1 -> CCMR1 |= TIM_CCMR1_OC1M_0
+                |  TIM_CCMR1_OC1M_1 
+                |  TIM_CCMR1_OC1M_2;  //111 - PWM Mode 2 для CH1
 
   TIM1 -> CCMR1 &= ~(TIM_CCMR1_CC1S); //Режим работы CH1 на выход
   TIM1 -> CCMR1 |= TIM_CCMR1_OC1PE;   //Включение предзагрузки регистра CCR1
@@ -362,8 +363,9 @@ void TIM1_Init()
 
   //Канал CH2 - выход
   {
-  TIM1 -> CCMR1 |= TIM_CCMR1_OC2M_1 
-                |  TIM_CCMR1_OC2M_2;  //110 - PWM Mode 1 для CH2
+  TIM1 -> CCMR1 |= TIM_CCMR1_OC2M_0
+                |  TIM_CCMR1_OC2M_1 
+                |  TIM_CCMR1_OC2M_2;  //111 - PWM Mode 2 для CH2
 
   TIM1 -> CCMR1 &= ~(TIM_CCMR1_CC2S); //Режим работы CH2 на выход
   TIM1 -> CCMR1 |= TIM_CCMR1_OC2PE;   //Включение предзагрузки регистра CCR2
@@ -376,7 +378,8 @@ void TIM1_Init()
 
   //Канал CH3 - выход
   {
-  TIM1 -> CCMR2 |= TIM_CCMR2_OC3M_1 
+  TIM1 -> CCMR2 |= TIM_CCMR2_OC3M_0
+                |  TIM_CCMR2_OC3M_1 
                 |  TIM_CCMR2_OC3M_2;  //110 - PWM Mode 1 для CH3
 
   TIM1 -> CCMR2 &= ~(TIM_CCMR2_CC3S); //Режим работы CH3 на выход

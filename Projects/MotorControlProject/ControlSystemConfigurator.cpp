@@ -4,5 +4,5 @@
 //объектов-конфигураторов
 
 ControlSystemConfiguration::ControlSystemConfiguration():
-  PI_current_loop_configurator(1.0,1.0,1.0,1.0,1.0)
+  PI_current_loop_configurator(TIMESAMPLE, 1.0, 0.1, 100.0, 0.0)
 {}

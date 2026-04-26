@@ -11,7 +11,7 @@ void ADCHandler::preparing_DMA()
 
 void ADCHandler::ADC_start()
 {
-// ✅ 1. Остановить DMA если он был включен
+  // ✅ 1. Остановить DMA если он был включен
   DMA2_Stream0 -> CR &= ~DMA_SxCR_EN;
   
   // Ждать остановки DMA (с таймаутом для безопасности)
@@ -73,19 +73,23 @@ void ADCHandler::convert_data()
 {
     //Фазные токи, усреднение и вычисление
     //В схеме измерения есть смещение на 3.3/2 = 1.65 В (2048 уровней)
-    int avg_A = (ADC_data_A[0] + ADC_data_A[1] + ADC_data_A[2] + ADC_data_A[3] - 2048 * 4) / 4;
-    int avg_B = (ADC_data_B[0] + ADC_data_B[1] + ADC_data_B[2] + ADC_data_B[3] - 2048 * 4) / 4;
-    int avg_C = (ADC_data_C[0] + ADC_data_C[1] + ADC_data_C[2] + ADC_data_C[3] - 2048 * 4) / 4;
+    //int avg_A = (ADC_data_A[0] + ADC_data_A[1] + ADC_data_A[2] + ADC_data_A[3] - 2048 * 4) / 4;
+    //int avg_B = (ADC_data_B[0] + ADC_data_B[1] + ADC_data_B[2] + ADC_data_B[3] - 2048 * 4) / 4;
+    //int avg_C = (ADC_data_C[0] + ADC_data_C[1] + ADC_data_C[2] + ADC_data_C[3] - 2048 * 4) / 4;
     
+    float avg_A = ( (ADC_data_A[0] + ADC_data_A[1] + ADC_data_A[2] + ADC_data_A[3] - 2048.0 * 4.0) / 4.0 ) + 20;
+    float avg_B = ( (ADC_data_B[0] + ADC_data_B[1] + ADC_data_B[2] + ADC_data_B[3] - 2048.0 * 4.0) / 4.0 ) + 20;
+    float avg_C = ( (ADC_data_C[0] + ADC_data_C[1] + ADC_data_C[2] + ADC_data_C[3] - 2048.0 * 4.0) / 4.0 ) + 20;
+
     /*
                  (avg/2048) * 1.65
-    i_phase = -----------------------; Ku_measurment = 20; R_shunt = 0.005 Ohm.
+    i_phase = -----------------------; Ku_measurment = 20V/V; R_shunt = 0.005 Ohm.
               R_shunt * Ku_measurment
     */
     
-    ADC_data_converted[0] = (((float)avg_A / 2048.0) * 1.65) / (0.005 * 20.0);
-    ADC_data_converted[1] = (((float)avg_B / 2048.0) * 1.65) / (0.005 * 20.0);
-    ADC_data_converted[2] = (((float)avg_C / 2048.0) * 1.65) / (0.005 * 20.0);
+    ADC_data_converted[0] = ((avg_A / 2048.0) * 1.65) / (0.005 * 20.0);
+    ADC_data_converted[1] = ((avg_B / 2048.0) * 1.65) / (0.005 * 20.0);
+    ADC_data_converted[2] = ((avg_C / 2048.0) * 1.65) / (0.005 * 20.0);
 }
 
 

@@ -143,23 +143,23 @@ extern "C" void DMA2_Stream0_IRQHandler(void)
     adc_handler.copy_data();           //копирование из буфера DMA в буферы для фаз
   }
 
-  if (DMA2->LISR & DMA_LISR_HTIF0)      // Half Transfer
-  {
-    DMA2->LIFCR = DMA_LIFCR_CHTIF0;     // Сброс флага
-    // Можно добавить счётчик для отладки
-  }
-  
-  if (DMA2->LISR & DMA_LISR_TEIF0)      // Transfer Error ❌
-  {
-    DMA2->LIFCR = DMA_LIFCR_CTEIF0;     // Сброс флага
-    // ОШИБКА ПЕРЕДАЧИ!
-    //while(1); // Остановить для отладки
-  }
-  
-  if (DMA2->LISR & DMA_LISR_FEIF0)      // FIFO Error ❌
-  {
-    DMA2->LIFCR = DMA_LIFCR_CFEIF0;     // Сброс флага
-    // ОШИБКА FIFO!
-    //while(1); // Остановить для отладки
-  }
+  //if (DMA2->LISR & DMA_LISR_HTIF0)      // Half Transfer
+  //{
+  //  DMA2->LIFCR = DMA_LIFCR_CHTIF0;     // Сброс флага
+  //  // Можно добавить счётчик для отладки
+  //}
+  //
+  //if (DMA2->LISR & DMA_LISR_TEIF0)      // Transfer Error ❌
+  //{
+  //  DMA2->LIFCR = DMA_LIFCR_CTEIF0;     // Сброс флага
+  //  // ОШИБКА ПЕРЕДАЧИ!
+  //  //while(1); // Остановить для отладки
+  //}
+  //
+  //if (DMA2->LISR & DMA_LISR_FEIF0)      // FIFO Error ❌
+  //{
+  //  DMA2->LIFCR = DMA_LIFCR_CFEIF0;     // Сброс флага
+  //  // ОШИБКА FIFO!
+  //  //while(1); // Остановить для отладки
+  //}
 }

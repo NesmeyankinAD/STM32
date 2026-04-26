@@ -35,17 +35,15 @@ ThreeSineWave   three_phase_sin_generator;
 SynchroMotorObserver observer;
 
 //Обработчик АЦП
-#pragma location = 0x20000000  // Явный адрес в SRAM
-uint16_t ADC_DMA_data[3];
+__attribute__((section(".RAM1"))) uint16_t ADC_DMA_data[3];
 
-#pragma location = default
 ADCHandler adc_handler(ADC_DMA_data); 
 
 //Обработчик ошибок
 FaultHandler fault_handler;
 
 //Объект системы управления
-ControlSystem motor_control_system;
+ControlSystem motor_control_system(&adc_handler);
 
 //Конфигуратор системы управления
 //Здесь произойдёт запись параметров частей САУ в их объекты-конфигураторы
