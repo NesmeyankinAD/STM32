@@ -22,6 +22,7 @@ class ControlSystemConfiguration
 
 public:
   PIControllerConfiguration PI_current_loop_configurator;
+  PIControllerConfiguration PI_Udc_loop_configurator;
 
   ControlSystemConfiguration();
 
@@ -32,6 +33,7 @@ class ControlSystem
 public:
   float duty_cycle_debug{0.0};  
   float I_ref{0.0};
+  float Udc_ref{0.0};
 
 public:
   ADCHandler* adc; 
@@ -41,6 +43,7 @@ public:
 
 private:
   PIController PI_current_loop;
+  PIController PI_Udc_loop;
 
 public:
   //Метод конфигурации САУ

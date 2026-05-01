@@ -8,6 +8,7 @@ ControlSystem::ControlSystem(ADCHandler* adc_external)
 void ControlSystem::configure(ControlSystemConfiguration& configurator)
 {
   PI_current_loop.configure(configurator.PI_current_loop_configurator);
+  PI_Udc_loop.configure(configurator.PI_Udc_loop_configurator);
 }
 
 void ControlSystem::execute_current_loop()
@@ -23,7 +24,10 @@ void ControlSystem::execute()
 
   GPIOC -> BSRR &= ~(1 << 20); //PWM Enable - 0
   
-  PI_current_loop.execute(I_ref, adc -> ADC_data_converted[0]);
+  PI_Udc_loop.execute(Udc_ref, adc -> ADC_data_converted[3]);
+
+  PI_current_loop.execute(PI_Udc_loop.get_output(), adc -> ADC_data_converted[0]);
+
 
   TIM1 -> CCR1 = (uint32_t)((PI_current_loop.get_output()/100.0) * 16800.0);
 
@@ -32,6 +36,7 @@ void ControlSystem::execute()
 
 void ControlSystem::stop()
 {
+  TIM1 -> CCR1 = 0;
   TIM1_Stop();
 
   GPIOE -> BSRR &= ~(0x3F << 24); //~(0011 1111 0000 0000 0000 0000 0000 0000)

@@ -14,7 +14,9 @@ public:
   uint16_t ADC_data_B[4]{0};            //Буфер для тока фазы B
   uint16_t ADC_data_C[4]{0};            //Буфер для тока фазы C
 
-  float    ADC_data_converted[3]{0.0};  //Обработанные данные
+  uint16_t ADC_data_Udc[4]{0};          //Буфер для Udc
+
+  float    ADC_data_converted[4]{0.0};  //Обработанные данные
   
 public:
   ADCHandler(uint16_t* buffer) : ADC_data(buffer){};

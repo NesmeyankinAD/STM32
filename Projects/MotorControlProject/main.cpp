@@ -17,7 +17,7 @@
 #define LED_D2_ON  GPIOA -> BSRR |= GPIO_BSRR_BR6;
 #define LED_D2_OFF GPIOA -> BSRR |= GPIO_BSRR_BS6;
 
-#define FPWM     float(5000.0)
+#define FPWM     float(5000.0)    //Необходимо так же перенастроить счётчики и АЦП на нужные частоты
 #define TPWM     float(1.0/FPWM)
 #define TSAMPLE  TPWM
 
@@ -35,7 +35,7 @@ ThreeSineWave   three_phase_sin_generator;
 SynchroMotorObserver observer;
 
 //Обработчик АЦП
-__attribute__((section(".RAM1"))) uint16_t ADC_DMA_data[3];
+__attribute__((section(".RAM1"))) uint16_t ADC_DMA_data[4];
 
 ADCHandler adc_handler(ADC_DMA_data); 
 

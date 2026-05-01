@@ -16,16 +16,18 @@ void ADC1_DMA2_Init()
                                                //Очистка регистра
   GPIOC -> MODER &= ~(GPIO_MODER_MODER0_Msk |  
                       GPIO_MODER_MODER1_Msk |  
-                      GPIO_MODER_MODER2_Msk);  
-                                               //PC0, PC1, PC2 - Analog mode
+                      GPIO_MODER_MODER2_Msk |
+                      GPIO_MODER_MODER3_Msk);  
+                                               //PC0, PC1, PC2, PC3 - Analog mode
   GPIOC -> MODER |=  (GPIO_MODER_MODER0 |                    
                       GPIO_MODER_MODER1 |                    
-                      GPIO_MODER_MODER2);                    
+                      GPIO_MODER_MODER2 |
+                      GPIO_MODER_MODER3);                    
                                                              
                                                              
   DMA2_Stream0 -> CR   = 0;                                    
   DMA2_Stream0 -> PAR  = (uint32_t)&(ADC1 -> DR);            //Периферийный адрес — регистр данных ADC
-  DMA2_Stream0 -> NDTR = 3;                                  //3 элемента (по 1 на канал)
+  DMA2_Stream0 -> NDTR = 4;                                  //4 элемента (по 1 на канал)
      
      
   DMA2_Stream0 -> CR |= DMA_SxCR_MINC;                       // инкремент addr при передаче
@@ -53,16 +55,18 @@ void ADC1_DMA2_Init()
   ADC1 -> CR2 |= ADC_CR2_DDS;                    //DMA Disable Selection
                                                  
   ADC1 -> SQR1 &= ~(ADC_SQR1_L);                 
-  ADC1 -> SQR1 |= (2 << ADC_SQR1_L_Pos);         //Длина последовательности преобразований 3 канала - 0,1,2
-  ADC1 -> SQR3  = (12 << 10) | (11 << 5) | (10); //Последовательность преобразований 10 -> 11 -> 12 каналы АЦП
+  ADC1 -> SQR1 |= (3 << ADC_SQR1_L_Pos);         //Длина последовательности преобразований 4 канала - 0,1,2,3
+  ADC1 -> SQR3  = (13 << 15) | (12 << 10) | (11 << 5) | (10); //Последовательность преобразований 10 -> 11 -> 12 -> 13 каналы АЦП
                                                  
   ADC1 -> SMPR1 &= ~(ADC_SMPR1_SMP10_Msk | 
                      ADC_SMPR1_SMP11_Msk | 
-                     ADC_SMPR1_SMP12_Msk);
+                     ADC_SMPR1_SMP12_Msk |
+                     ADC_SMPR1_SMP13_Msk);
 
   ADC1 -> SMPR1 |= (3 << ADC_SMPR1_SMP10_Pos) |  // 56 cycles
                    (3 << ADC_SMPR1_SMP11_Pos) |
-                   (3 << ADC_SMPR1_SMP12_Pos);
+                   (3 << ADC_SMPR1_SMP12_Pos) |
+                   (3 << ADC_SMPR1_SMP13_Pos);
                                                  
   //ADC1 -> CR2 |= ADC_CR2_ADON;                 //Включение АЦП, но не запуск конвертаций
 

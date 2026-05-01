@@ -83,13 +83,10 @@
    <Watchpoint expression="strategy_handler.current_strategy" name="strategy_handler.current_strategy" radix="16" linenumber="0" filename="../MotorControlProject"/>
    <Watchpoint expression="enable_work" name="enable_work" radix="-1" linenumber="62" filename="main.cpp"/>
    <Watchpoint expression="adc_handler.ADC_data_converted" name="adc_handler.ADC_data_converted" radix="-1" linenumber="0" filename="../MotorControlProject"/>
-   <Watchpoint expression="adc_handler.ADC_data" name="adc_handler.ADC_data" radix="-1" linenumber="0" filename="../MotorControlProject"/>
-   <Watchpoint expression="adc_handler.ADC_data_A[0]" name="adc_handler.ADC_data_A[0]" radix="10" linenumber="0" filename="../MotorControlProject"/>
-   <Watchpoint expression="adc_handler.ADC_data_A[1]" name="adc_handler.ADC_data_A[1]" radix="10" linenumber="0" filename="../MotorControlProject"/>
-   <Watchpoint expression="adc_handler.ADC_data_A[2]" name="adc_handler.ADC_data_A[2]" radix="10" linenumber="0" filename="../MotorControlProject"/>
-   <Watchpoint expression="adc_handler.ADC_data_A[3]" name="adc_handler.ADC_data_A[3]" radix="10" linenumber="0" filename="../MotorControlProject"/>
-   <Watchpoint expression="motor_control_system.I_ref" name="motor_control_system.I_ref" radix="10" linenumber="0" filename=""/>
-   <Watchpoint expression="motor_control_system.PI_current_loop" name="motor_control_system.PI_current_loop" radix="10" linenumber="0" filename=""/>
+   <Watchpoint expression="motor_control_system.I_ref" name="motor_control_system.I_ref" radix="10" linenumber="0" filename="../MotorControlProject"/>
+   <Watchpoint expression="motor_control_system.PI_current_loop" name="motor_control_system.PI_current_loop" radix="10" linenumber="0" filename="../MotorControlProject"/>
+   <Watchpoint expression="motor_control_system.Udc_ref" name="motor_control_system.Udc_ref" radix="10" linenumber="0" filename="../MotorControlProject"/>
+   <Watchpoint expression="motor_control_system.PI_Udc_loop" name="motor_control_system.PI_Udc_loop" radix="10" linenumber="0" filename="../MotorControlProject"/>
   </Watches>
  </Watch1>
  <Watch2>
@@ -102,14 +99,16 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="64" useTextEdit="1" path="main.cpp" left="0" selected="1" top="49" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="100" y="19" useTextEdit="1" path="main.cpp" left="0" selected="1" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="136" useTextEdit="1" folds0="3,24,35,41,74,94,114" path="InterruptHeandlers.cpp" left="0" top="106" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="112" y="81" useTextEdit="1" path="ADCHandler.cpp" left="0" top="66" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="18" y="36" useTextEdit="1" path="ControlSystem.h" left="0" top="18" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="26" y="25" useTextEdit="1" path="ControlSystem.cpp" left="0" top="6" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="11" y="16" useTextEdit="1" path="ADCHandler.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="103" y="86" useTextEdit="1" path="ADCHandler.cpp" left="1" top="66" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="53" y="24" useTextEdit="1" path="ControlSystem.h" left="0" top="18" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="30" useTextEdit="1" path="ControlSystem.cpp" left="0" top="9" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="17" useTextEdit="1" path="ADCHandler.h" left="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="50" useTextEdit="1" path="PIController.cpp" left="0" top="24" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="8" useTextEdit="1" path="ControlSystemConfigurator.cpp" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="51" y="7" useTextEdit="1" path="ControlSystemConfigurator.cpp" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="61" y="21" useTextEdit="1" path="SystemInitialization.cpp" left="0" top="9" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="6" y="5" useTextEdit="1" path="PIController.h" left="0" top="0" codecName="Default"/>
  </Files>
  <EMStudioWindow activeProject="MotorControlEXE" fileDialogDefaultFilter="*" autoConnectTarget="ST-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="E:/STM32_edu/Projects/CppProject" debugSearchPath="" autoConnectCapabilities="3967"/>
 </session>

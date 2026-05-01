@@ -28,7 +28,7 @@ void ADCHandler::ADC_start()
                   DMA_LIFCR_CFEIF0;     // FIFO Error
   
   // ✅ 3. Перезагрузить количество данных
-  DMA2_Stream0 -> NDTR = 3;
+  DMA2_Stream0 -> NDTR = 4;
   
   // ✅ 4. Включить DMA
   DMA2_Stream0 -> CR |= DMA_SxCR_EN;
@@ -66,6 +66,8 @@ void ADCHandler::copy_data()
   ADC_data_B[iterator] = ADC_data[1];
   ADC_data_C[iterator] = ADC_data[2];
 
+  ADC_data_Udc[iterator] = ADC_data[3];
+
   iterator++; 
 }
 
@@ -73,14 +75,18 @@ void ADCHandler::convert_data()
 {
     //Фазные токи, усреднение и вычисление
     //В схеме измерения есть смещение на 3.3/2 = 1.65 В (2048 уровней)
-    //int avg_A = (ADC_data_A[0] + ADC_data_A[1] + ADC_data_A[2] + ADC_data_A[3] - 2048 * 4) / 4;
-    //int avg_B = (ADC_data_B[0] + ADC_data_B[1] + ADC_data_B[2] + ADC_data_B[3] - 2048 * 4) / 4;
-    //int avg_C = (ADC_data_C[0] + ADC_data_C[1] + ADC_data_C[2] + ADC_data_C[3] - 2048 * 4) / 4;
     
-    float avg_A = ( (ADC_data_A[0] + ADC_data_A[1] + ADC_data_A[2] + ADC_data_A[3] - 2048.0 * 4.0) / 4.0 ) + 20;
-    float avg_B = ( (ADC_data_B[0] + ADC_data_B[1] + ADC_data_B[2] + ADC_data_B[3] - 2048.0 * 4.0) / 4.0 ) + 20;
-    float avg_C = ( (ADC_data_C[0] + ADC_data_C[1] + ADC_data_C[2] + ADC_data_C[3] - 2048.0 * 4.0) / 4.0 ) + 20;
+    //float avg_A = ( (ADC_data_A[0] + ADC_data_A[1] + ADC_data_A[2] + ADC_data_A[3] - 2048.0 * 4.0) / 4.0 ) + 20;
+    //float avg_B = ( (ADC_data_B[0] + ADC_data_B[1] + ADC_data_B[2] + ADC_data_B[3] - 2048.0 * 4.0) / 4.0 ) + 20;
+    //float avg_C = ( (ADC_data_C[0] + ADC_data_C[1] + ADC_data_C[2] + ADC_data_C[3] - 2048.0 * 4.0) / 4.0 ) + 20;
 
+    float avg_A = (( -(ADC_data_A[0] + ADC_data_A[1] + ADC_data_A[2] + ADC_data_A[3]) + 2048.0 * 4.0) / 4.0 ) - 30.0;
+    float avg_B = (( -(ADC_data_B[0] + ADC_data_B[1] + ADC_data_B[2] + ADC_data_B[3]) + 2048.0 * 4.0) / 4.0 ) - 30.0;
+    float avg_C = (( -(ADC_data_C[0] + ADC_data_C[1] + ADC_data_C[2] + ADC_data_C[3]) + 2048.0 * 4.0) / 4.0 ) - 30.0;
+
+    float avg_Udc = ((ADC_data_Udc[0] + ADC_data_Udc[1] + ADC_data_Udc[2] + ADC_data_Udc[3]) / 4.0 ) - 0.0;
+
+    //Phase Currents
     /*
                  (avg/2048) * 1.65
     i_phase = -----------------------; Ku_measurment = 20V/V; R_shunt = 0.005 Ohm.
@@ -90,6 +96,9 @@ void ADCHandler::convert_data()
     ADC_data_converted[0] = ((avg_A / 2048.0) * 1.65) / (0.005 * 20.0);
     ADC_data_converted[1] = ((avg_B / 2048.0) * 1.65) / (0.005 * 20.0);
     ADC_data_converted[2] = ((avg_C / 2048.0) * 1.65) / (0.005 * 20.0);
+
+    //External Udc
+    ADC_data_converted[3] = ((avg_Udc / 2048.0) * 1.65) * 20.404;
 }
 
 
