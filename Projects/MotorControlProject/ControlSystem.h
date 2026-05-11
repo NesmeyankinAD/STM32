@@ -9,9 +9,11 @@
 #include "Filter_I.h"
 #include "ADCHandler.h"
 
-#define FPWM       5000.0
-#define TPWM       1/FPWM
-#define TIMESAMPLE TPWM
+#include "SineWave.h"
+
+#define FPWM        float(5000.0)    //Необходимо так же перенастроить счётчики и АЦП на нужные частоты
+#define TPWM        float(1.0/FPWM)
+#define TIMESAMPLE  TPWM
 
 class ControlSystemConfiguration
 {
@@ -23,6 +25,8 @@ class ControlSystemConfiguration
 public:
   PIControllerConfiguration PI_current_loop_configurator;
   PIControllerConfiguration PI_Udc_loop_configurator;
+
+  SineWaveConfiguration     one_phase_sin_generator_config;
 
   ControlSystemConfiguration();
 
@@ -44,6 +48,8 @@ public:
 private:
   PIController PI_current_loop;
   PIController PI_Udc_loop;
+
+  SineWave     one_phase_sin_generator;
 
 public:
   //Метод конфигурации САУ

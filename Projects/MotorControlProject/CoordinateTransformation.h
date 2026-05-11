@@ -11,10 +11,10 @@ public:
   void ABC_ab_transform(float A, float B, float C, float& a, float& b);
   void ab_ABC_transform(float a, float b, float& A, float& B, float& C);
 
-  void ab_dq_transform(float a, float b, float& d, float& q);
-  void dq_ab_transform(float d, float q, float& a, float& b);
+  void ab_dq_transform(float angle, float a, float b, float& d, float& q);
+  void dq_ab_transform(float angle, float d, float q, float& a, float& b);
   
-  void ABC_dq_transform(float A, float B, float C, float& d, float& q);
-  void dq_ABC_transform(float d, float q, float& A, float& B, float& C);
+  void ABC_dq_transform(float angle, float A, float B, float C, float& d, float& q);
+  void dq_ABC_transform(float angle, float d, float q, float& A, float& B, float& C);
 
 };//CoordinateTrasformation

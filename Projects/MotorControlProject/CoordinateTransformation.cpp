@@ -1,19 +1,19 @@
 #include "CoordinateTransformation.h"
 
-  void ABC_ab_transform(float A, float B, float C, float& a, float& b)
+  void CoordinateTrasformation::ABC_ab_transform(float A, float B, float C, float& a, float& b)
   {
     a = A;
     b = (B - C) / SQRT_3; 
   }
 
-  void ab_ABC_transform(float a, float b, float& A, float& B, float& C)  
+  void CoordinateTrasformation::ab_ABC_transform(float a, float b, float& A, float& B, float& C)  
   {
     A =  a;
     B =  0.5 * (-a + SQRT_3 * b);
     C = -0.5 * (a + SQRT_3 * b);
   }
 
-  void ab_dq_transform(float angle, float a, float b, float& d, float& q)  
+  void CoordinateTrasformation::ab_dq_transform(float angle, float a, float b, float& d, float& q)  
   {
     float _cos = cosf(angle);
     float _sin = sinf(angle);
@@ -22,7 +22,7 @@
     q = -a * _sin + b * _cos;
   }
 
-  void dq_ab_transform(float angle, float d, float q, float& a, float& b)  
+  void CoordinateTrasformation::dq_ab_transform(float angle, float d, float q, float& a, float& b)  
   {
     float _cos = cosf(angle);
     float _sin = sinf(angle);
@@ -31,7 +31,7 @@
     b = d * _sin + q * _cos;
   }
 
-  void ABC_dq_transform(float angle, float A, float B, float C, float& d, float& q)  
+  void CoordinateTrasformation::ABC_dq_transform(float angle, float A, float B, float C, float& d, float& q)  
   {
     float _cos = cosf(angle);
     float _sin = sinf(angle);
@@ -40,7 +40,7 @@
     q = -A * _sin + ((B - C) / SQRT_3) * _cos;
   }
 
-  void dq_ABC_transform(float angle, float d, float q, float& A, float& B, float& C)  
+  void CoordinateTrasformation::dq_ABC_transform(float angle, float d, float q, float& A, float& B, float& C)  
   {
     float _cos = cosf(angle);
     float _sin = sinf(angle);

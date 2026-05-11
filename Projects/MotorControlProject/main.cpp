@@ -17,19 +17,14 @@
 #define LED_D2_ON  GPIOA -> BSRR |= GPIO_BSRR_BR6;
 #define LED_D2_OFF GPIOA -> BSRR |= GPIO_BSRR_BS6;
 
-#define FPWM     float(5000.0)    //Необходимо так же перенастроить счётчики и АЦП на нужные частоты
-#define TPWM     float(1.0/FPWM)
-#define TSAMPLE  TPWM
+#define FPWM        float(5000.0)    //Необходимо так же перенастроить счётчики и АЦП на нужные частоты
+#define TPWM        float(1.0/FPWM)
+#define TIMESAMPLE  TPWM
 
 //Глобальные переменные
 int32_t us_counter   = 0; //Счётчик микросекунд (TIM4_Handler)
 int32_t ms_counter   = 0; //Счётчик милисекунд
 int32_t led_counter  = 0; //Счётчик секунд для светодиода (TIM2_Handler)
-
-//Объекты-генераторы сигналов
-SineWave        one_phase_sin_generator;
-ThreeSineWave   three_phase_sin_generator;
-
 
 //Наблюдатель
 SynchroMotorObserver observer;
@@ -75,27 +70,13 @@ int main()
   EXTI_Init();
   ADC1_DMA2_Init(); adc_handler.preparing_DMA();//Инициализация АЦП и памяти для DMA
   
- 
-  {//one-phase generator configuration
-  SineWaveConfiguration one_phase_sin_generator_config(0.001, 5.0, 50.0, 5.0, 0.0);
 
-  one_phase_sin_generator.configure(one_phase_sin_generator_config);
-  }
-
-  {//three-phase generator configuration
-  ThreeSineWaveConfiguration three_phase_sin_generator_config(0.001, 5.0, 50.0, 5.0, 0.0);
-
-  three_phase_sin_generator.configure(three_phase_sin_generator_config);
-  }
-
-  
   //Конфигурация наблюдателя
-  SynchroMotorObserverConfigurator observer_configurator(TSAMPLE);
+  SynchroMotorObserverConfigurator observer_configurator(TIMESAMPLE);
 
   /* Конфигурация САУ 
      Здесь произойдёт конфигурация всех составных частей САУ*/
   motor_control_system.configure(motor_control_system_configurator);
-
 
   //Разрешение прерываний
   __enable_irq();

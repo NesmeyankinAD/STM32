@@ -266,9 +266,9 @@ void TIM1_Init()
 
   //GPIOE -> MODER |= GPIO_MODER_MODE7_1;             //Режим альтернативной функции для указанных пинов
   GPIOE -> MODER |= GPIO_MODER_MODE8_1;               
-  //GPIOE -> MODER |= GPIO_MODER_MODE9_1;               
-  //GPIOE -> MODER |= GPIO_MODER_MODE10_1;            
-  //GPIOE -> MODER |= GPIO_MODER_MODE11_1;            
+  GPIOE -> MODER |= GPIO_MODER_MODE9_1;               
+  GPIOE -> MODER |= GPIO_MODER_MODE10_1;            
+  GPIOE -> MODER |= GPIO_MODER_MODE11_1;            
   //GPIOE -> MODER |= GPIO_MODER_MODE12_1;            
   //GPIOE -> MODER |= GPIO_MODER_MODE13_1;            
   //GPIOE -> MODER |= GPIO_MODER_MODE14_1;            
@@ -276,9 +276,9 @@ void TIM1_Init()
                                                       
   //GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED7_1;       //High speed mode для указанных пинов
   GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED8_1;         
-  //GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED9_1;         
-  //GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED10_1;      
-  //GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED11_1;      
+  GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED9_1;         
+  GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED10_1;      
+  GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED11_1;      
   //GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED12_1;      
   //GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED13_1;      
   //GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED14_1;      
@@ -286,9 +286,9 @@ void TIM1_Init()
                                                       
   //GPIOE -> AFR[0]  |= (1 << GPIO_AFRL_AFSEL7_Pos);  //AF1 у указанных пинов
   GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL8_Pos);
-  //GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL9_Pos);
-  //GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL10_Pos);
-  //GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL11_Pos);
+  GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL9_Pos);
+  GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL10_Pos);
+  GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL11_Pos);
   //GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL12_Pos);
   //GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL13_Pos);
   //GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL14_Pos);
@@ -336,7 +336,9 @@ void TIM1_Init()
   TIM1 -> ARR    = 16800- 1;          //Частота ШИМ 5кГц
   TIM1 -> CCR1   = 0;                 //Duty cycle, будем изменять в программе
   TIM1 -> CCR2   = 0;                 //Duty cycle, будем изменять в программе
-  TIM1 -> CCR3   = 0;                 //Duty cycle, будем изменять в программе, 
+  TIM1 -> CCR3   = 0;                 //Duty cycle, будем изменять в программе
+  
+  TIM1 -> CR1   |= TIM_CR1_ARPE;      // Auto-reload preload enable 
   }
   
   /*---Настройка Slave-mode---*/
@@ -352,9 +354,8 @@ void TIM1_Init()
   {
   //Канал CH1 - выход
   {
-  TIM1 -> CCMR1 |= TIM_CCMR1_OC1M_0
-                |  TIM_CCMR1_OC1M_1 
-                |  TIM_CCMR1_OC1M_2;  //111 - PWM Mode 2 для CH1
+  TIM1 -> CCMR1 |= TIM_CCMR1_OC1M_1 
+                |  TIM_CCMR1_OC1M_2;  //110 - PWM Mode 1 для CH1
 
   TIM1 -> CCMR1 &= ~(TIM_CCMR1_CC1S); //Режим работы CH1 на выход
   TIM1 -> CCMR1 |= TIM_CCMR1_OC1PE;   //Включение предзагрузки регистра CCR1
@@ -367,9 +368,8 @@ void TIM1_Init()
 
   //Канал CH2 - выход
   {
-  TIM1 -> CCMR1 |= TIM_CCMR1_OC2M_0
-                |  TIM_CCMR1_OC2M_1 
-                |  TIM_CCMR1_OC2M_2;  //111 - PWM Mode 2 для CH2
+  TIM1 -> CCMR1 |= TIM_CCMR1_OC2M_1 
+                |  TIM_CCMR1_OC2M_2;  //110 - PWM Mode 1 для CH2
 
   TIM1 -> CCMR1 &= ~(TIM_CCMR1_CC2S); //Режим работы CH2 на выход
   TIM1 -> CCMR1 |= TIM_CCMR1_OC2PE;   //Включение предзагрузки регистра CCR2
@@ -382,8 +382,7 @@ void TIM1_Init()
 
   //Канал CH3 - выход
   {
-  TIM1 -> CCMR2 |= TIM_CCMR2_OC3M_0
-                |  TIM_CCMR2_OC3M_1 
+  TIM1 -> CCMR2 |= TIM_CCMR2_OC3M_1 
                 |  TIM_CCMR2_OC3M_2;  //110 - PWM Mode 1 для CH3
 
   TIM1 -> CCMR2 &= ~(TIM_CCMR2_CC3S); //Режим работы CH3 на выход
@@ -395,8 +394,9 @@ void TIM1_Init()
   //Настройка полярности в CCER: CC3P=0(прямой) и CC3NP=1(инверсный) по умочланию
   }
   }
-  
-  TIM1 -> BDTR  |= TIM_BDTR_MOE;      //Разрешение работы OCx и OCxN в блоке dead-time
+  TIM1 -> BDTR &= ~(TIM_BDTR_DTG);          // Очистка
+  TIM1 -> BDTR |= (84 << TIM_BDTR_DTG_Pos); // ~500ns dead time
+  TIM1 -> BDTR |= TIM_BDTR_MOE;             //Разрешение работы OCx и OCxN в блоке dead-time
   
 }//TIM1_Init()
 
@@ -451,7 +451,7 @@ void TIM2_Init()
     TIM2 -> CR1   &= ~(TIM_CR1_CMS);    //Режим выравнивания edge align
     TIM2 -> CR1   |= TIM_CR1_DIR;       //Режим счёт вверх
     TIM2 -> ARR    = 16800 - 1;         //Частота пилы 5кГц
-    TIM2 -> CCR2   = 10000;             //Duty cycle, момент начала расчёта
+    TIM2 -> CCR2   = 8400;              //Duty cycle, момент начала расчёта
   }
   
   /*---Настройка Master-mode---*/

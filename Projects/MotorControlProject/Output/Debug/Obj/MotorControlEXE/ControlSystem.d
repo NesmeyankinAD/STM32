@@ -588,4 +588,8 @@ Output/Debug/Obj/MotorControlEXE/ControlSystem.o: \
   D:\Programms\SEGGER\include\stdarg.h \
   E:\STM32_edu\Projects\MotorControlProject\Filter_I.h \
   E:\STM32_edu\Projects\MotorControlProject\ADCHandler.h \
-  E:\STM32_edu\Projects\MotorControlProject\Delay.cpp
+  E:\STM32_edu\Projects\MotorControlProject\Delay.cpp \
+  E:\STM32_edu\Projects\MotorControlProject\SineWave.h \
+  E:\STM32_edu\Projects\MotorControlProject\RisingSaw.h \
+  E:\STM32_edu\Projects\MotorControlProject\SignalGenerator.h \
+  E:\STM32_edu\Projects\MotorControlProject\Integrator.h
