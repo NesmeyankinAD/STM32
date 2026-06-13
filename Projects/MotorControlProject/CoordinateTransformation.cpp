@@ -49,3 +49,13 @@
     B =  0.5 * (SQRT_3 * (d * _sin + q *_cos) - A);
     C = -0.5 * (SQRT_3 * (d * _sin + q *_cos) + A);
   }
+
+  void CoordinateTrasformation::dq_ABC_transform(float angle, float d, float q, std::vector<float> phases)  
+  {
+    float _cos = cosf(angle);
+    float _sin = sinf(angle);
+
+    phases[0] =  d * _cos - q * _sin;
+    phases[1] =  0.5 * (SQRT_3 * (d * _sin + q *_cos) - phases[0]);
+    phases[2] = -0.5 * (SQRT_3 * (d * _sin + q *_cos) + phases[0]);
+  }

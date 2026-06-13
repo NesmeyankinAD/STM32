@@ -38,7 +38,7 @@ ADCHandler adc_handler(ADC_DMA_data);
 FaultHandler fault_handler;
 
 //Объект системы управления
-ControlSystem motor_control_system(&adc_handler);
+ControlSystem motor_control_system(&adc_handler, &observer);
 
 //Конфигуратор системы управления
 //Здесь произойдёт запись параметров частей САУ в их объекты-конфигураторы
@@ -51,9 +51,9 @@ ControlStrategy* currentStrategy = nullptr;
 StrategyHandler strategy_handler(&motor_control_system);
 
 
-volatile bool enable_work = 0;
-volatile bool enable_PWM  = 0;
-volatile bool fault       = 0;
+volatile uint8_t enable_work = 0;
+volatile bool enable_PWM     = 0;
+volatile bool fault          = 0;
 
 
 int main()
@@ -68,6 +68,7 @@ int main()
   TIM2_Init();
   TIM4_Init();
   EXTI_Init();
+  DAC_Init();
   ADC1_DMA2_Init(); adc_handler.preparing_DMA();//Инициализация АЦП и памяти для DMA
   
 

@@ -91,6 +91,7 @@ void GPIO_Init()
   RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOAEN; //Включение тактирования порта А 
   RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOEEN; //Включение тактирования порта Е
   RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOCEN; //Включение тактирования порта C
+  RCC -> AHB1ENR |= RCC_AHB1ENR_GPIODEN; //Включение тактирования порта D
 
 
   /*------Кнопки-------*/
@@ -100,7 +101,7 @@ void GPIO_Init()
 
   GPIOE -> PUPDR |= GPIO_PUPDR_PUPDR4_0; // Подтяжка пина GPIOE_4 к VCC
   GPIOE -> PUPDR |= GPIO_PUPDR_PUPDR3_0; // Подтяжка пина GPIOE_3 к VCC
-  GPIOA -> PUPDR |= GPIO_PUPDR_PUPDR0_1; // Подтяжка пина GPIOE_3 к GND
+  GPIOA -> PUPDR |= GPIO_PUPDR_PUPDR0_1; // Подтяжка пина GPIOE_0 к GND
 
   /*------Светодиоды-------*/
   GPIOA -> MODER |= GPIO_MODER_MODE6_0;  // Установка режима работы пина GPIOA_6 на выход (LED D2)
@@ -110,14 +111,42 @@ void GPIO_Init()
   //GPIOA -> BSRR |= GPIO_BSRR_BS7;        // Выключение D3
 
   /*------Входы для энкодера Холла-------*/
-  GPIOA-> MODER &= ~GPIO_MODER_MODE1_1;  // Установка режима работы пина GPIOA_1 на вход (EXTI1)
-  GPIOA-> MODER &= ~GPIO_MODER_MODE2_1;  // Установка режима работы пина GPIOA_2 на вход (EXTI2)
-  GPIOA-> MODER &= ~GPIO_MODER_MODE3_1;  // Установка режима работы пина GPIOA_3 на вход (EXTI3)
+  GPIOA-> MODER &= ~GPIO_MODER_MODE1_1;       // Установка режима работы пина GPIOA_1 на вход (EXTI1)
+  GPIOA-> MODER &= ~GPIO_MODER_MODE2_1;       // Установка режима работы пина GPIOA_2 на вход (EXTI2)
+  GPIOA-> MODER &= ~GPIO_MODER_MODE3_1;       // Установка режима работы пина GPIOA_3 на вход (EXTI3)
+
+  GPIOA -> OSPEEDR |= GPIO_OSPEEDR_OSPEED1_1; //high-speed
+  GPIOA -> OSPEEDR |= GPIO_OSPEEDR_OSPEED2_1;
+  GPIOA -> OSPEEDR |= GPIO_OSPEEDR_OSPEED3_1;
 
   /*------Выход PWM Enable-------*/
   GPIOC -> MODER |= GPIO_MODER_MODE4_0;  // Установка режима работы пина GPIOC_4 на выход     
   GPIOC -> PUPDR |= GPIO_PUPDR_PUPDR4_0; // Подтяжка пина GPIOC_4 к VCC
   GPIOC -> OTYPER|= GPIO_OTYPER_OT4;     // Open-drain GPIOC_4
+
+
+  /*------Выходы для отладки прерываний-------*/
+  //push-pull pull-down pins
+  GPIOD -> MODER |= GPIO_MODER_MODE6_0;       // Установка режима работы пинов GPIOD на выход
+  GPIOD -> MODER |= GPIO_MODER_MODE7_0;
+  GPIOD -> MODER |= GPIO_MODER_MODE8_0;
+  GPIOD -> MODER |= GPIO_MODER_MODE9_0;
+  GPIOD -> MODER |= GPIO_MODER_MODE10_0;
+  GPIOD -> MODER |= GPIO_MODER_MODE11_0;
+
+  GPIOD -> PUPDR |= GPIO_PUPDR_PUPDR6_1;      // Подтяжка пинов GPIOD к GND
+  GPIOD -> PUPDR |= GPIO_PUPDR_PUPDR7_1; 
+  GPIOD -> PUPDR |= GPIO_PUPDR_PUPDR8_1; 
+  GPIOD -> PUPDR |= GPIO_PUPDR_PUPDR9_1; 
+  GPIOD -> PUPDR |= GPIO_PUPDR_PUPDR10_1;
+  GPIOD -> PUPDR |= GPIO_PUPDR_PUPDR11_1;
+  
+  GPIOD -> OSPEEDR |= GPIO_OSPEEDR_OSPEED6_1; //high-speed
+  GPIOD -> OSPEEDR |= GPIO_OSPEEDR_OSPEED7_1;
+  GPIOD -> OSPEEDR |= GPIO_OSPEEDR_OSPEED8_1;
+  GPIOD -> OSPEEDR |= GPIO_OSPEEDR_OSPEED9_1;
+  GPIOD -> OSPEEDR |= GPIO_OSPEEDR_OSPEED10_1;
+  GPIOD -> OSPEEDR |= GPIO_OSPEEDR_OSPEED11_1; 
 
 }//GPIO_Init()
 
@@ -269,8 +298,8 @@ void TIM1_Init()
   GPIOE -> MODER |= GPIO_MODER_MODE9_1;               
   GPIOE -> MODER |= GPIO_MODER_MODE10_1;            
   GPIOE -> MODER |= GPIO_MODER_MODE11_1;            
-  //GPIOE -> MODER |= GPIO_MODER_MODE12_1;            
-  //GPIOE -> MODER |= GPIO_MODER_MODE13_1;            
+  GPIOE -> MODER |= GPIO_MODER_MODE12_1;            
+  GPIOE -> MODER |= GPIO_MODER_MODE13_1;            
   //GPIOE -> MODER |= GPIO_MODER_MODE14_1;            
   //GPIOE -> MODER |= GPIO_MODER_MODE15_1;            
                                                       
@@ -279,8 +308,8 @@ void TIM1_Init()
   GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED9_1;         
   GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED10_1;      
   GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED11_1;      
-  //GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED12_1;      
-  //GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED13_1;      
+  GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED12_1;      
+  GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED13_1;      
   //GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED14_1;      
   //GPIOE -> OSPEEDR |= GPIO_OSPEEDR_OSPEED15_1;      
                                                       
@@ -289,8 +318,8 @@ void TIM1_Init()
   GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL9_Pos);
   GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL10_Pos);
   GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL11_Pos);
-  //GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL12_Pos);
-  //GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL13_Pos);
+  GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL12_Pos);
+  GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL13_Pos);
   //GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL14_Pos);
   //GPIOE -> AFR[1]  |= (1 << GPIO_AFRH_AFSEL15_Pos);
   }
@@ -483,7 +512,7 @@ void TIM2_Init()
 
     TIM2 -> SR   &= ~TIM_SR_CC2IF;  //Очистка флага запроса прерывания
 
-    //NVIC_SetPriority(TIM2_IRQn, 1); //Установка приоритета прерывания в NVIC
+    NVIC_SetPriority(TIM2_IRQn, 2); //Установка приоритета прерывания в NVIC
     NVIC_EnableIRQ(TIM2_IRQn);      //Разрешение работы прерывания в NVIC
   }
 
@@ -550,7 +579,8 @@ void TIM4_Init()
 
     TIM4 -> SR   &= ~TIM_SR_UIF;      //Очистка флага запроса прерывания
 
-    //NVIC_SetPriority(TIM4_IRQn, 1); //Установка приоритета прерывания в NVIC
+    NVIC_SetPriority(TIM4_IRQn, 0); //Установка приоритета прерывания в NVIC
+    
     NVIC_EnableIRQ(TIM4_IRQn);        //Разрешение работы прерывания в NVIC
   }
 
@@ -568,9 +598,9 @@ void DAC_Init()
   GPIOA -> MODER |= GPIO_MODER_MODE4;      //Аналоговый режим GPIOA4 (DAC1_OUT)
   //GPIOA -> MODER |= GPIO_MODER_MODE5;      //Аналоговый режим GPIOA5 (DAC2_OUT)
 
-  //DAC -> CR |= DAC_CR_EN1;                 //Включить DAC канал 1
+  DAC -> CR |= DAC_CR_EN1;                 //Включить DAC канал 1
   //DAC -> CR |= DAC_CR_EN2;                 //Включить DAC канал 2
-  //DAC -> DHR12R1 = 0;                      //Инициализация выхода DAC1_OUT
+  DAC -> DHR12R1 = 0;                      //Инициализация выхода DAC1_OUT
   //DAC -> DHR12R2 = 0;                      //Инициализация выхода DAC2_OUT
 }//DAC_Init()
 
@@ -595,6 +625,10 @@ void EXTI_Init()
   EXTI -> FTSR |= EXTI_FTSR_TR1
                 | EXTI_FTSR_TR2
                 | EXTI_FTSR_TR3; //Настройка события - срабатывание прерывания по спаду сигнала                
+ 
+  NVIC_SetPriority(EXTI1_IRQn, 1);
+  NVIC_SetPriority(EXTI2_IRQn, 1);
+  NVIC_SetPriority(EXTI3_IRQn, 1);
                  
   NVIC_EnableIRQ(EXTI1_IRQn);     //Разрешение прерываний в контроллере NVIC
   NVIC_EnableIRQ(EXTI2_IRQn);

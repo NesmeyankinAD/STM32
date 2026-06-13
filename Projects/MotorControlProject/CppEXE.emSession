@@ -36,16 +36,17 @@
   <ProjectSessionItem path="MotorControlEXE"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ADCHandler"/>
-  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;CMSIS Files"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystem"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystemBlocks"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystemBlocks;CoordinateTransformation"/>
-  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystemBlocks;PIController"/>
+  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystemBlocks;Integrator"/>
+  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystemBlocks;Observer"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystemBlocks;SignalGenerator"/>
-  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystemBlocks;SignalGenerator;RisingSaw"/>
-  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystemBlocks;SignalGenerator;SineWave"/>
+  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;ControlSystemBlocks;SignalGenerator;ThreeSineWave"/>
+  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;InterruptHeandlers"/>
+  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;InterruptHeandlers;Sources"/>
+  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;System Files"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;SystemInitialization"/>
-  <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;SystemInitialization;Headers"/>
   <ProjectSessionItem path="MotorControlEXE;MotorControlEXE;SystemInitialization;Sources"/>
  </Project>
  <Register1>
@@ -77,17 +78,13 @@
  <Watch1>
   <Watches active="1" update="Twice a Second">
    <Watchpoint expression="us_counter" name="us_counter" radix="11" linenumber="0" filename="../MotorControlProject"/>
-   <Watchpoint expression="observer" name="observer" radix="11" linenumber="0" filename="../MotorControlProject"/>
-   <Watchpoint expression="service_counter" name="service_counter" radix="10" linenumber="0" filename="../MotorControlProject"/>
-   <Watchpoint expression="motor_control_system.duty_cycle_debug" name="motor_control_system.duty_cycle_debug" radix="11" linenumber="0" filename="../MotorControlProject"/>
+   <Watchpoint expression="observer" name="observer" radix="10" linenumber="0" filename="../MotorControlProject"/>
    <Watchpoint expression="strategy_handler.current_strategy" name="strategy_handler.current_strategy" radix="16" linenumber="0" filename="../MotorControlProject"/>
    <Watchpoint expression="enable_work" name="enable_work" radix="-1" linenumber="57" filename="main.cpp"/>
    <Watchpoint expression="adc_handler.ADC_data_converted" name="adc_handler.ADC_data_converted" radix="-1" linenumber="0" filename="../MotorControlProject"/>
-   <Watchpoint expression="motor_control_system.I_ref" name="motor_control_system.I_ref" radix="10" linenumber="0" filename="../MotorControlProject"/>
-   <Watchpoint expression="motor_control_system.PI_current_loop" name="motor_control_system.PI_current_loop" radix="10" linenumber="0" filename="../MotorControlProject"/>
-   <Watchpoint expression="motor_control_system.Udc_ref" name="motor_control_system.Udc_ref" radix="10" linenumber="0" filename="../MotorControlProject"/>
-   <Watchpoint expression="motor_control_system.PI_Udc_loop" name="motor_control_system.PI_Udc_loop" radix="10" linenumber="0" filename="../MotorControlProject"/>
-   <Watchpoint expression="motor_control_system.one_phase_sin_generator" name="motor_control_system.one_phase_sin_generator" radix="-1" linenumber="0" filename=""/>
+   <Watchpoint expression="motor_control_system" name="motor_control_system" radix="10" linenumber="0" filename="../MotorControlProject"/>
+   <Watchpoint expression="temp_angle" name="temp_angle" radix="10" linenumber="0" filename="../MotorControlProject"/>
+   <Watchpoint expression="last_observer_angle" name="last_observer_angle" radix="10" linenumber="0" filename="../MotorControlProject"/>
   </Watches>
  </Watch1>
  <Watch2>
@@ -100,14 +97,21 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="59" useTextEdit="1" folds0="76,93" path="main.cpp" left="0" top="74" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="136" useTextEdit="1" folds0="3,24,35,41,60,74,94,114" path="InterruptHeandlers.cpp" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="24" y="15" useTextEdit="1" path="ControlSystem.h" left="0" top="3" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="17" y="42" useTextEdit="1" path="ControlSystem.cpp" left="0" selected="1" top="21" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="52" y="8" useTextEdit="1" path="ControlSystemConfigurator.cpp" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="38" y="340" useTextEdit="1" folds0="3,89,125,262,299,355,369,383,411,425,461" path="SystemInitialization.cpp" left="0" top="66" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="73" y="13" useTextEdit="1" path="CoordinateTransformation.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="3" y="22" useTextEdit="1" path="CoordinateTransformation.cpp" left="0" top="6" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="59" useTextEdit="1" path="main.cpp" left="0" top="44" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="148" useTextEdit="1" folds0="3,19,28,39,45,67,135,178,217" path="InterruptHeandlers.cpp" left="0" top="118" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="154" useTextEdit="1" folds0="128,135,169" path="ControlSystem.cpp" left="0" top="129" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="16" y="111" useTextEdit="1" path="ControlSystem.h" left="0" top="98" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="17" useTextEdit="1" path="ControlSystemConfigurator.cpp" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="2" y="626" useTextEdit="1" folds0="3,154,275,328,384,398,412,432,433,440,453,454,490,522,533,538,539,589,638,653" path="SystemInitialization.cpp" left="0" top="596" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="27" useTextEdit="1" folds0="123,165" path="Observer.cpp" left="0" top="11" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="26" y="58" useTextEdit="1" path="Observer.h" left="0" top="32" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="6" y="4" useTextEdit="1" path="ThreeSineWave.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="64" useTextEdit="1" path="General.cpp" left="0" top="48" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="3" y="43" useTextEdit="1" path="CoordinateTransformation.cpp" left="0" top="18" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="ADCHandler.cpp" left="0" top="75" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="228" useTextEdit="1" path="STM32F4xx/Source/STM32F4xx_Startup.s" left="0" selected="1" top="213" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="45" useTextEdit="1" path="Integrator.cpp" left="0" top="30" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="117" useTextEdit="1" path="D:/Programms/SEGGER/source/libcxx/include/stdlib.h" left="0" top="101" codecName="Default"/>
  </Files>
  <EMStudioWindow activeProject="MotorControlEXE" fileDialogDefaultFilter="*" autoConnectTarget="ST-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="E:/STM32_edu/Projects/CppProject" debugSearchPath="" autoConnectCapabilities="3967"/>
 </session>

@@ -22,6 +22,10 @@ extern "C" void TIM2_IRQHandler()
 
   if (TIM2 -> SR & TIM_SR_CC2IF)   //Произошло совпадение CNT и CCR2 значений
     {
+      
+      //DEBUG
+      GPIOD -> BSRR |= (1 << 9); //PD9
+
       {//Background operation
         led_counter++;
 
@@ -53,6 +57,9 @@ extern "C" void TIM2_IRQHandler()
           if (currentStrategy != nullptr) {currentStrategy -> execute();}
         //---------------------------------------------------------------------//
       
+      //DEBUG
+      GPIOD -> BSRR |= (1 << (9 + 16)); //PD9
+
       TIM2 -> SR &= ~TIM_SR_CC2IF;//Очистка флага прерывания
     }
 }
@@ -63,9 +70,15 @@ extern "C" void TIM4_IRQHandler()
 
   if (TIM4 -> SR & TIM_SR_UIF)
   {
+      //DEBUG
+      GPIOD -> BSRR |= (1 << 10); //PD10
+
     adc_handler.ADC_start();
 
     us_counter += 50;//Cчёт по 50 мкс
+
+      //DEBUG
+      GPIOD -> BSRR |= (1 << (10 + 16)); //PD10
   }
   
   TIM4 -> SR &= ~TIM_SR_UIF; // Очистка флага прерывания
@@ -73,10 +86,10 @@ extern "C" void TIM4_IRQHandler()
 
 extern "C" void EXTI1_IRQHandler(void)
 {
-EXTI -> PR |= EXTI_PR_PR1;  //Сброс бита запроса прерывания
+//EXTI -> PR |= EXTI_PR_PR1;  //Сброс бита запроса прерывания
 
 //--------Программа обработчика прерывания----------------------//
-
+/*
 observer.set_present_time(us_counter);
 
 observer.compute_rotation_direction();
@@ -86,17 +99,41 @@ observer.compute_angle();
 observer.compute_rotation_frequency();
 
 observer.set_previous_time(us_counter);
+*/
+
+  //New method
+
+  if((us_counter - observer.get_previous_time()) < 550)
+  {
+    //прерывание не засчитывается
+  }
+  else
+  {
+      //DEBUG
+      GPIOD -> BSRR |= (1 << 6); //PD6
+
+    //производим расчёт
+    observer.set_present_time(us_counter);
+    observer.compute_rotation_direction_6();
+    observer.compute_angle_6();
+    observer.compute_rotation_frequency();
+    observer.set_previous_time(us_counter);
+  }
+
+
+      //DEBUG
+      GPIOD -> BSRR |= (1 << (6 + 16)); //PD6
 
 //--------Программа обработчика прерывания----------------------//
-
+EXTI -> PR |= EXTI_PR_PR1;  //Сброс бита запроса прерывания
 }
 
 extern "C" void EXTI2_IRQHandler(void)
 {
-EXTI -> PR |= EXTI_PR_PR2;  // Сброс бита запроса прерывания
+//EXTI -> PR |= EXTI_PR_PR2;  // Сброс бита запроса прерывания
 
 //--------Программа обработчика прерывания----------------------//
-
+/*
 observer.set_present_time(us_counter);
 
 observer.compute_rotation_direction();
@@ -106,17 +143,40 @@ observer.compute_angle();
 observer.compute_rotation_frequency();
 
 observer.set_previous_time(us_counter);
+*/
+
+  //New method
+  if((us_counter - observer.get_previous_time()) < 1000)
+  {
+    //прерывание не засчитывается
+  }
+  else
+  {
+      //DEBUG
+      GPIOD -> BSRR |= (1 << 7); //PD7
+
+    //производим расчёт
+    observer.set_present_time(us_counter);
+    observer.compute_rotation_direction_6();
+    observer.compute_angle_6();
+    observer.compute_rotation_frequency();
+    observer.set_previous_time(us_counter);
+  }
+
+      //DEBUG
+      GPIOD -> BSRR |= (1 << (7 + 16)); //PD7
 
 //--------Программа обработчика прерывания----------------------//
-
+EXTI -> PR |= EXTI_PR_PR2;  // Сброс бита запроса прерывания
 }
 
 extern "C" void EXTI3_IRQHandler(void)
 {
-EXTI -> PR |= EXTI_PR_PR3;  //Сброс бита запроса прерывания
+//EXTI -> PR |= EXTI_PR_PR3;  //Сброс бита запроса прерывания
 
 //--------Программа обработчика прерывания----------------------//
-
+  
+/*
 observer.set_present_time(us_counter);
 
 observer.compute_rotation_direction();
@@ -126,9 +186,32 @@ observer.compute_angle();
 observer.compute_rotation_frequency();
 
 observer.set_previous_time(us_counter);
+*/
+
+  //New method
+
+  if((us_counter - observer.get_previous_time()) < 1000)
+  {
+    //прерывание не засчитывается
+  }
+  else
+  {
+      //DEBUG
+      GPIOD -> BSRR |= (1 << 8); //PD8
+
+    //производим расчёт
+    observer.set_present_time(us_counter);
+    observer.compute_rotation_direction_6();
+    observer.compute_angle_6();
+    observer.compute_rotation_frequency();
+    observer.set_previous_time(us_counter);
+  }
+
+      //DEBUG
+      GPIOD -> BSRR |= (1 << (8 + 16)); //PD8
 
 //--------Программа обработчика прерывания----------------------//
-
+  EXTI -> PR |= EXTI_PR_PR3;  //Сброс бита запроса прерывания
 }
 
 extern "C" void DMA2_Stream0_IRQHandler(void)
@@ -137,29 +220,16 @@ extern "C" void DMA2_Stream0_IRQHandler(void)
 
   if (DMA2 -> LISR & DMA_LISR_TCIF0)
   {
+      //DEBUG
+      GPIOD -> BSRR |= (1 << 11); //PD11
+
     DMA2 -> LIFCR = DMA_LIFCR_CTCIF0; //Сброс флага окончания передачи
     
-    //adc_handler.ADC_stop();            //Остановка АЦП по событию завершения передачи DMA
+    //adc_handler.ADC_stop();          //Остановка АЦП по событию завершения передачи DMA
     adc_handler.copy_data();           //копирование из буфера DMA в буферы для фаз
+
+      //DEBUG
+      GPIOD -> BSRR |= (1 << (11 + 16)); //PD8
   }
 
-  //if (DMA2->LISR & DMA_LISR_HTIF0)      // Half Transfer
-  //{
-  //  DMA2->LIFCR = DMA_LIFCR_CHTIF0;     // Сброс флага
-  //  // Можно добавить счётчик для отладки
-  //}
-  //
-  //if (DMA2->LISR & DMA_LISR_TEIF0)      // Transfer Error ❌
-  //{
-  //  DMA2->LIFCR = DMA_LIFCR_CTEIF0;     // Сброс флага
-  //  // ОШИБКА ПЕРЕДАЧИ!
-  //  //while(1); // Остановить для отладки
-  //}
-  //
-  //if (DMA2->LISR & DMA_LISR_FEIF0)      // FIFO Error ❌
-  //{
-  //  DMA2->LIFCR = DMA_LIFCR_CFEIF0;     // Сброс флага
-  //  // ОШИБКА FIFO!
-  //  //while(1); // Остановить для отладки
-  //}
 }

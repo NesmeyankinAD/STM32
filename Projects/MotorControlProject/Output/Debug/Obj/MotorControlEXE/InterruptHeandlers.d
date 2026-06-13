@@ -210,10 +210,9 @@ Output/Debug/Obj/MotorControlEXE/InterruptHeandlers.o: \
   E:\STM32_edu\Projects\MotorControlProject\ControlSystem.h \
   E:\STM32_edu\Projects\MotorControlProject\SystemInitialization.h \
   E:\STM32_edu\Projects\MotorControlProject\CoordinateTransformation.h \
-  E:\STM32_edu\Projects\MotorControlProject\PIController.h \
-  E:\STM32_edu\Projects\MotorControlProject\MaxMinModulation.h \
-  D:\Programms\SEGGER\source\libcxx\include\algorithm \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\adjacent_find.h \
+  D:\Programms\SEGGER\source\libcxx\include\vector \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\copy.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\copy_move_common.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\iterator_operations.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\iter_swap.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\ranges_iterator_concept.h \
@@ -241,15 +240,6 @@ Output/Debug/Obj/MotorControlEXE/InterruptHeandlers.o: \
   D:\Programms\SEGGER\source\libcxx\include\__iterator\iter_swap.h \
   D:\Programms\SEGGER\source\libcxx\include\__iterator\next.h \
   D:\Programms\SEGGER\source\libcxx\include\__iterator\prev.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\all_of.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\any_of.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\binary_search.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\lower_bound.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\half_positive.h \
-  D:\Programms\SEGGER\source\libcxx\include\__functional\identity.h \
-  D:\Programms\SEGGER\source\libcxx\include\__type_traits\is_callable.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\copy.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\copy_move_common.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\unwrap_iter.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\unwrap_range.h \
   D:\Programms\SEGGER\source\libcxx\include\__string\constexpr_c_functions.h \
@@ -271,23 +261,21 @@ Output/Debug/Obj/MotorControlEXE/InterruptHeandlers.o: \
   D:\Programms\SEGGER\source\libcxx\include\__iterator\segmented_iterator.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\min.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\min_element.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\copy_backward.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\copy_if.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\copy_n.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\count.h \
-  D:\Programms\SEGGER\source\libcxx\include\__bit\invert_if.h \
-  D:\Programms\SEGGER\source\libcxx\include\__bit\popcount.h \
-  D:\Programms\SEGGER\source\libcxx\include\__bit\rotate.h \
-  D:\Programms\SEGGER\source\libcxx\include\__fwd\bit_reference.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\count_if.h \
+  D:\Programms\SEGGER\source\libcxx\include\__functional\identity.h \
+  D:\Programms\SEGGER\source\libcxx\include\__type_traits\is_callable.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\equal.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\equal_range.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\upper_bound.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\fill.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\fill_n.h \
+  D:\Programms\SEGGER\source\libcxx\include\__fwd\bit_reference.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\lexicographical_compare.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\lexicographical_compare_three_way.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\three_way_comp_ref_type.h \
+  D:\Programms\SEGGER\source\libcxx\include\__compare\compare_three_way.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\remove.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\find.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\find_segment_if.h \
   D:\Programms\SEGGER\source\libcxx\include\__bit\countr.h \
+  D:\Programms\SEGGER\source\libcxx\include\__bit\rotate.h \
+  D:\Programms\SEGGER\source\libcxx\include\__bit\invert_if.h \
   D:\Programms\SEGGER\source\libcxx\include\cwchar \
   D:\Programms\SEGGER\source\libcxx\include\cwctype \
   D:\Programms\SEGGER\source\libcxx\include\cctype \
@@ -297,8 +285,50 @@ Output/Debug/Obj/MotorControlEXE/InterruptHeandlers.o: \
   D:\Programms\SEGGER\include\wctype.h \
   D:\Programms\SEGGER\source\libcxx\include\wchar.h \
   D:\Programms\SEGGER\include\wchar.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\find_end.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\search.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\find_if.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\remove_if.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\rotate.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\move.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\move_backward.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\swap_ranges.h \
+  D:\Programms\SEGGER\source\libcxx\include\__bit_reference \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\copy_n.h \
+  D:\Programms\SEGGER\source\libcxx\include\__bit\popcount.h \
+  D:\Programms\SEGGER\source\libcxx\include\cstring \
+  D:\Programms\SEGGER\source\libcxx\include\string.h \
+  D:\Programms\SEGGER\include\string.h \
+  D:\Programms\SEGGER\source\libcxx\include\__debug_utils\sanitizers.h \
+  D:\Programms\SEGGER\source\libcxx\include\__format\enable_insertable.h \
+  D:\Programms\SEGGER\source\libcxx\include\__format\formatter.h \
+  D:\Programms\SEGGER\source\libcxx\include\__fwd\format.h \
+  D:\Programms\SEGGER\source\libcxx\include\__format\formatter_bool.h \
+  D:\Programms\SEGGER\source\libcxx\include\__format\concepts.h \
+  D:\Programms\SEGGER\source\libcxx\include\__format\format_parse_context.h \
+  D:\Programms\SEGGER\source\libcxx\include\__format\format_error.h \
+  D:\Programms\SEGGER\source\libcxx\include\stdexcept \
+  D:\Programms\SEGGER\source\libcxx\include\__fwd\string.h \
+  D:\Programms\SEGGER\source\libcxx\include\__fwd\memory.h \
+  D:\Programms\SEGGER\source\libcxx\include\__fwd\memory_resource.h \
+  D:\Programms\SEGGER\source\libcxx\include\exception \
+  D:\Programms\SEGGER\source\libcxx\include\__exception\exception_ptr.h \
+  D:\Programms\SEGGER\source\libcxx\include\__exception\operations.h \
+  D:\Programms\SEGGER\source\libcxx\include\typeinfo \
+  D:\Programms\SEGGER\source\libcxx\include\__exception\nested_exception.h \
+  D:\Programms\SEGGER\source\libcxx\include\__exception\terminate.h \
+  D:\Programms\SEGGER\source\libcxx\include\iosfwd \
+  D:\Programms\SEGGER\source\libcxx\include\__fwd\fstream.h \
+  D:\Programms\SEGGER\source\libcxx\include\__fwd\ios.h \
+  D:\Programms\SEGGER\source\libcxx\include\__fwd\istream.h \
+  D:\Programms\SEGGER\source\libcxx\include\__fwd\ostream.h \
+  D:\Programms\SEGGER\source\libcxx\include\__fwd\sstream.h \
+  D:\Programms\SEGGER\source\libcxx\include\__fwd\streambuf.h \
+  D:\Programms\SEGGER\source\libcxx\include\__std_mbstate_t.h \
+  D:\Programms\SEGGER\source\libcxx\include\__mbstate_t.h \
+  D:\Programms\SEGGER\source\libcxx\include\string_view \
+  D:\Programms\SEGGER\source\libcxx\include\__functional\hash.h \
+  D:\Programms\SEGGER\source\libcxx\include\__functional\unary_function.h \
+  D:\Programms\SEGGER\source\libcxx\include\__fwd\string_view.h \
+  D:\Programms\SEGGER\source\libcxx\include\__iterator\bounded_iter.h \
   D:\Programms\SEGGER\source\libcxx\include\__iterator\reverse_iterator.h \
   D:\Programms\SEGGER\source\libcxx\include\__compare\compare_three_way_result.h \
   D:\Programms\SEGGER\source\libcxx\include\__iterator\iterator.h \
@@ -307,22 +337,42 @@ Output/Debug/Obj/MotorControlEXE/InterruptHeandlers.o: \
   D:\Programms\SEGGER\source\libcxx\include\__ranges\dangling.h \
   D:\Programms\SEGGER\source\libcxx\include\__ranges\view_interface.h \
   D:\Programms\SEGGER\source\libcxx\include\__ranges\empty.h \
+  D:\Programms\SEGGER\source\libcxx\include\__iterator\wrap_iter.h \
+  D:\Programms\SEGGER\source\libcxx\include\__string\char_traits.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\find_end.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\search.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\find_first_of.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\find_if.h \
+  D:\Programms\SEGGER\source\libcxx\include\cstdio \
+  D:\Programms\SEGGER\source\libcxx\include\stdio.h \
+  D:\Programms\SEGGER\include\stdio.h \
+  D:\Programms\SEGGER\source\libcxx\include\__type_traits\type_identity.h \
+  D:\Programms\SEGGER\source\libcxx\include\__iterator\data.h \
+  D:\Programms\SEGGER\source\libcxx\include\__iterator\empty.h \
+  D:\Programms\SEGGER\source\libcxx\include\__iterator\reverse_access.h \
+  D:\Programms\SEGGER\source\libcxx\include\__iterator\size.h \
+  D:\Programms\SEGGER\source\libcxx\include\compare \
+  D:\Programms\SEGGER\source\libcxx\include\cmath \
+  D:\Programms\SEGGER\source\libcxx\include\__math\special_functions.h \
+  D:\Programms\SEGGER\source\libcxx\include\algorithm \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\adjacent_find.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\all_of.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\any_of.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\binary_search.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\lower_bound.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\half_positive.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\copy_backward.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\copy_if.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\count.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\count_if.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\equal_range.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\upper_bound.h \
+  D:\Programms\SEGGER\source\libcxx\include\__algorithm\fill.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\find_if_not.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\for_each.h \
   D:\Programms\SEGGER\source\libcxx\include\__ranges\movable_box.h \
   D:\Programms\SEGGER\source\libcxx\include\optional \
-  D:\Programms\SEGGER\source\libcxx\include\__functional\hash.h \
-  D:\Programms\SEGGER\source\libcxx\include\__functional\unary_function.h \
-  D:\Programms\SEGGER\source\libcxx\include\cstring \
-  D:\Programms\SEGGER\source\libcxx\include\string.h \
-  D:\Programms\SEGGER\include\string.h \
   D:\Programms\SEGGER\source\libcxx\include\__type_traits\negation.h \
   D:\Programms\SEGGER\source\libcxx\include\__utility\in_place.h \
-  D:\Programms\SEGGER\source\libcxx\include\compare \
-  D:\Programms\SEGGER\source\libcxx\include\cmath \
-  D:\Programms\SEGGER\source\libcxx\include\__math\special_functions.h \
   D:\Programms\SEGGER\source\libcxx\include\atomic \
   D:\Programms\SEGGER\source\libcxx\include\__atomic\aliases.h \
   D:\Programms\SEGGER\source\libcxx\include\__atomic\atomic.h \
@@ -366,38 +416,17 @@ Output/Debug/Obj/MotorControlEXE/InterruptHeandlers.o: \
   D:\Programms\SEGGER\source\libcxx\include\__iterator\front_insert_iterator.h \
   D:\Programms\SEGGER\source\libcxx\include\__iterator\insert_iterator.h \
   D:\Programms\SEGGER\source\libcxx\include\__iterator\istream_iterator.h \
-  D:\Programms\SEGGER\source\libcxx\include\__fwd\istream.h \
-  D:\Programms\SEGGER\source\libcxx\include\__fwd\string.h \
-  D:\Programms\SEGGER\source\libcxx\include\__fwd\memory.h \
-  D:\Programms\SEGGER\source\libcxx\include\__fwd\memory_resource.h \
   D:\Programms\SEGGER\source\libcxx\include\__iterator\default_sentinel.h \
   D:\Programms\SEGGER\source\libcxx\include\__iterator\istreambuf_iterator.h \
-  D:\Programms\SEGGER\source\libcxx\include\__fwd\streambuf.h \
   D:\Programms\SEGGER\source\libcxx\include\__iterator\move_iterator.h \
   D:\Programms\SEGGER\source\libcxx\include\__iterator\move_sentinel.h \
   D:\Programms\SEGGER\source\libcxx\include\__iterator\ostream_iterator.h \
-  D:\Programms\SEGGER\source\libcxx\include\__fwd\ostream.h \
   D:\Programms\SEGGER\source\libcxx\include\__iterator\ostreambuf_iterator.h \
-  D:\Programms\SEGGER\source\libcxx\include\iosfwd \
-  D:\Programms\SEGGER\source\libcxx\include\__fwd\fstream.h \
-  D:\Programms\SEGGER\source\libcxx\include\__fwd\ios.h \
-  D:\Programms\SEGGER\source\libcxx\include\__fwd\sstream.h \
-  D:\Programms\SEGGER\source\libcxx\include\__std_mbstate_t.h \
-  D:\Programms\SEGGER\source\libcxx\include\__mbstate_t.h \
-  D:\Programms\SEGGER\source\libcxx\include\__iterator\wrap_iter.h \
-  D:\Programms\SEGGER\source\libcxx\include\__iterator\reverse_access.h \
   D:\Programms\SEGGER\source\libcxx\include\variant \
   D:\Programms\SEGGER\source\libcxx\include\__tuple\find_index.h \
   D:\Programms\SEGGER\source\libcxx\include\__type_traits\dependent_type.h \
-  D:\Programms\SEGGER\source\libcxx\include\__type_traits\type_identity.h \
   D:\Programms\SEGGER\source\libcxx\include\__utility\forward_like.h \
   D:\Programms\SEGGER\source\libcxx\include\__variant\monostate.h \
-  D:\Programms\SEGGER\source\libcxx\include\exception \
-  D:\Programms\SEGGER\source\libcxx\include\__exception\exception_ptr.h \
-  D:\Programms\SEGGER\source\libcxx\include\__exception\operations.h \
-  D:\Programms\SEGGER\source\libcxx\include\typeinfo \
-  D:\Programms\SEGGER\source\libcxx\include\__exception\nested_exception.h \
-  D:\Programms\SEGGER\source\libcxx\include\__exception\terminate.h \
   D:\Programms\SEGGER\source\libcxx\include\tuple \
   D:\Programms\SEGGER\source\libcxx\include\__memory\allocator_arg_t.h \
   D:\Programms\SEGGER\source\libcxx\include\__memory\uses_allocator.h \
@@ -414,14 +443,12 @@ Output/Debug/Obj/MotorControlEXE/InterruptHeandlers.o: \
   D:\Programms\SEGGER\source\libcxx\include\__memory\auto_ptr.h \
   D:\Programms\SEGGER\source\libcxx\include\__memory\inout_ptr.h \
   D:\Programms\SEGGER\source\libcxx\include\__memory\shared_ptr.h \
-  D:\Programms\SEGGER\source\libcxx\include\__compare\compare_three_way.h \
   D:\Programms\SEGGER\source\libcxx\include\__functional\reference_wrapper.h \
   D:\Programms\SEGGER\source\libcxx\include\__functional\weak_result_type.h \
   D:\Programms\SEGGER\source\libcxx\include\__memory\allocation_guard.h \
   D:\Programms\SEGGER\source\libcxx\include\__memory\allocator_destructor.h \
   D:\Programms\SEGGER\source\libcxx\include\__memory\compressed_pair.h \
   D:\Programms\SEGGER\source\libcxx\include\__memory\uninitialized_algorithms.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\move.h \
   D:\Programms\SEGGER\source\libcxx\include\__type_traits\is_unbounded_array.h \
   D:\Programms\SEGGER\source\libcxx\include\__utility\exception_guard.h \
   D:\Programms\SEGGER\source\libcxx\include\__memory\unique_ptr.h \
@@ -430,14 +457,10 @@ Output/Debug/Obj/MotorControlEXE/InterruptHeandlers.o: \
   D:\Programms\SEGGER\source\libcxx\include\__memory\out_ptr.h \
   D:\Programms\SEGGER\source\libcxx\include\__memory\raw_storage_iterator.h \
   D:\Programms\SEGGER\source\libcxx\include\__memory\temporary_buffer.h \
-  D:\Programms\SEGGER\source\libcxx\include\stdexcept \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\generate.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\generate_n.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\includes.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\inplace_merge.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\rotate.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\move_backward.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\swap_ranges.h \
   D:\Programms\SEGGER\source\libcxx\include\__memory\destruct_n.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\is_heap.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\is_heap_until.h \
@@ -445,7 +468,6 @@ Output/Debug/Obj/MotorControlEXE/InterruptHeandlers.o: \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\is_permutation.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\is_sorted.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\is_sorted_until.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\lexicographical_compare.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\make_heap.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\sift_down.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\merge.h \
@@ -475,10 +497,8 @@ Output/Debug/Obj/MotorControlEXE/InterruptHeandlers.o: \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\partition_copy.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\partition_point.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\prev_permutation.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\remove.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\remove_copy.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\remove_copy_if.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\remove_if.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\replace.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\replace_copy.h \
   D:\Programms\SEGGER\source\libcxx\include\__algorithm\replace_copy_if.h \
@@ -502,28 +522,6 @@ Output/Debug/Obj/MotorControlEXE/InterruptHeandlers.o: \
   D:\Programms\SEGGER\source\libcxx\include\execution \
   D:\Programms\SEGGER\source\libcxx\include\__type_traits\is_execution_policy.h \
   D:\Programms\SEGGER\source\libcxx\include\bit \
-  D:\Programms\SEGGER\source\libcxx\include\vector \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\lexicographical_compare_three_way.h \
-  D:\Programms\SEGGER\source\libcxx\include\__algorithm\three_way_comp_ref_type.h \
-  D:\Programms\SEGGER\source\libcxx\include\__bit_reference \
-  D:\Programms\SEGGER\source\libcxx\include\__debug_utils\sanitizers.h \
-  D:\Programms\SEGGER\source\libcxx\include\__format\enable_insertable.h \
-  D:\Programms\SEGGER\source\libcxx\include\__format\formatter.h \
-  D:\Programms\SEGGER\source\libcxx\include\__fwd\format.h \
-  D:\Programms\SEGGER\source\libcxx\include\__format\formatter_bool.h \
-  D:\Programms\SEGGER\source\libcxx\include\__format\concepts.h \
-  D:\Programms\SEGGER\source\libcxx\include\__format\format_parse_context.h \
-  D:\Programms\SEGGER\source\libcxx\include\__format\format_error.h \
-  D:\Programms\SEGGER\source\libcxx\include\string_view \
-  D:\Programms\SEGGER\source\libcxx\include\__fwd\string_view.h \
-  D:\Programms\SEGGER\source\libcxx\include\__iterator\bounded_iter.h \
-  D:\Programms\SEGGER\source\libcxx\include\__string\char_traits.h \
-  D:\Programms\SEGGER\source\libcxx\include\cstdio \
-  D:\Programms\SEGGER\source\libcxx\include\stdio.h \
-  D:\Programms\SEGGER\include\stdio.h \
-  D:\Programms\SEGGER\source\libcxx\include\__iterator\data.h \
-  D:\Programms\SEGGER\source\libcxx\include\__iterator\empty.h \
-  D:\Programms\SEGGER\source\libcxx\include\__iterator\size.h \
   D:\Programms\SEGGER\source\libcxx\include\__format\formatter_integral.h \
   D:\Programms\SEGGER\source\libcxx\include\__charconv\to_chars_integral.h \
   D:\Programms\SEGGER\source\libcxx\include\__charconv\tables.h \
@@ -596,4 +594,6 @@ Output/Debug/Obj/MotorControlEXE/InterruptHeandlers.o: \
   D:\Programms\SEGGER\source\libcxx\include\__locale_dir\locale_base_api\bsd_locale_defaults.h \
   D:\Programms\SEGGER\source\libcxx\include\cstdarg \
   D:\Programms\SEGGER\include\stdarg.h \
+  E:\STM32_edu\Projects\MotorControlProject\PIController.h \
+  E:\STM32_edu\Projects\MotorControlProject\MaxMinModulation.h \
   E:\STM32_edu\Projects\MotorControlProject\Filter_I.h

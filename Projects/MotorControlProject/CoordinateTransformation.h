@@ -2,6 +2,7 @@
 
 #include <math.h>
 #include <stdint.h>
+#include <vector>
 
 #define SQRT_3 1.7320508075688
 
@@ -16,5 +17,6 @@ public:
   
   void ABC_dq_transform(float angle, float A, float B, float C, float& d, float& q);
   void dq_ABC_transform(float angle, float d, float q, float& A, float& B, float& C);
+  void dq_ABC_transform(float angle, float d, float q, std::vector<float> phases);
 
 };//CoordinateTrasformation

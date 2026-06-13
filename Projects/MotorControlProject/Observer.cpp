@@ -43,6 +43,16 @@ int8_t SynchroMotorObserver::get_rotation_direction()
   return m_rotation_direction;
 }
 
+float SynchroMotorObserver::get_previous_angle()
+{
+  return m_previous_angle;
+}
+
+float SynchroMotorObserver::get_previous_time()
+{
+  return m_previous_time;
+}
+
 void SynchroMotorObserver::set_previous_time(int32_t& time)
 {
   m_previous_time = time;
@@ -53,12 +63,17 @@ void SynchroMotorObserver::set_present_time (int32_t& time)
   m_present_time = time;
 }
 
+void SynchroMotorObserver::set_previous_angle(float angle)
+{
+  m_previous_angle = angle;
+}
+
 void SynchroMotorObserver::compute_rotation_frequency()
 {
   m_rotation_frequency = (m_rotation_direction * 6.0 / ((m_present_time - m_previous_time) / 1000000.0) / 1); //град/с 
 }
 
-void SynchroMotorObserver::compute_angle()
+void SynchroMotorObserver::compute_angle_6()
 {
   if(m_rotation_direction == 1)
   {
@@ -76,12 +91,35 @@ void SynchroMotorObserver::compute_angle()
   else
   {}
 
-  if(m_angle_counter == 60 || m_angle_counter == -60) m_angle_counter = 0;
+  //if(m_angle_counter == 60 || m_angle_counter == -60) m_angle_counter = 0;
 
-  m_angle = m_turns_counter * 360 + m_angle_counter * 6;
+  m_angle = m_angle_counter * 6;
 }
 
-void SynchroMotorObserver::compute_rotation_direction()
+void SynchroMotorObserver::compute_angle_12()
+{
+  if(m_rotation_direction == 1)
+  {
+    m_angle_counter++;
+
+    if(m_angle_counter % 30 == 0) {m_turns_counter++;}
+  }
+  else
+  if(m_rotation_direction == -1)
+  {
+    m_angle_counter--;
+
+    if(m_angle_counter % 30 == 0) {m_turns_counter--;}
+  }
+  else
+  {}
+
+  //if(m_angle_counter == 60 || m_angle_counter == -60) m_angle_counter = 0;
+
+  m_angle = m_angle_counter * 12;
+}
+
+void SynchroMotorObserver::compute_rotation_direction_6()
 {
   /*Abstract
 PA1 - yellow, 
@@ -111,6 +149,42 @@ GPIOA -> IDR = 0b1110 - PA1 = PA2 = PA3 = 1, PA0 = 0.
        ((last_position == 0b1100) && (current_position == 0b0100)) ||
        ((last_position == 0b0100) && (current_position == 0b0110)) ||
        ((last_position == 0b0110) && (current_position == 0b0010)) 
+       )
+       {m_rotation_direction = -1; /*inverse rotation*/}
+
+    last_position = current_position;
+  }
+  else
+  {
+    last_position = current_position;
+    m_rotation_direction = 0;
+  }
+}
+
+void SynchroMotorObserver::compute_rotation_direction_12()
+{
+  /*Abstract
+PA1 - yellow, 
+PA2 - green, 
+PA3 - blue.
+GPIOA -> IDR = 0b1110 - PA1 = PA2 = PA3 = 1, PA0 = 0.
+*/
+
+  current_position = (int8_t(GPIOA -> IDR)) & 0b00001110;
+
+  if(last_position)
+  {
+    if(
+       ((last_position == 0b1100) && (current_position == 0b1010)) ||
+       ((last_position == 0b1010) && (current_position == 0b0110)) ||
+       ((last_position == 0b0110) && (current_position == 0b1100))
+      )
+      {m_rotation_direction = 1; /*direct rotation*/}
+    else 
+    if(
+       ((last_position == 0b0110) && (current_position == 0b1010)) ||
+       ((last_position == 0b1010) && (current_position == 0b1100)) ||
+       ((last_position == 0b1100) && (current_position == 0b0110)) 
        )
        {m_rotation_direction = -1; /*inverse rotation*/}
 
